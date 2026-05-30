@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 110" role="img" aria-label="signal*">
+  <style>
+    .word { font-family: "Big Shoulders", "Big Shoulders Display", "Archivo Black", system-ui, sans-serif; font-weight: 900; letter-spacing: -0.04em; }
+  </style>
+  <rect width="360" height="110" fill="#F5F5F0"/>
+  <text x="20" y="92" class="word" font-size="110" fill="#0A0A0A">signal</text>
+  <text x="288" y="92" class="word" font-size="110" fill="#FF1F6A">*</text>
+</svg>

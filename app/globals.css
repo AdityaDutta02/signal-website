@@ -1,0 +1,103 @@
+/* Mirrors Figr /signal/src/index.css - fonts loaded via next/font in layout instead of @import */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #FFFFFF;
+  --fg: #0A0A0A;
+  --fg-muted: #6B6B6B;
+  --pink: #FF1F6A;
+  --pink-wash: #FFF5F8;
+  --border: #0A0A0A;
+  --grid: #ECECEC;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border-radius: 0;
+}
+
+html, body, #root, #__next {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  font-family: var(--font-archivo), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--pink);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ====== Keyframes - opacity-only for any text-bearing element ====== */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.78; }
+  50% { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.anim-fade-in { animation: fade-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.anim-blink { animation: blink 1s steps(2) infinite; }
+.anim-marquee { animation: marquee 50s linear infinite; }
+.anim-pulse-soft { animation: pulse-soft 3s ease-in-out infinite; }
+.anim-scale-in { animation: scale-in 280ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* ====== Typographic utilities ====== */
+
+.font-display {
+  font-family: var(--font-big-shoulders), 'Archivo Black', system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.015em;
+}
+
+.font-mono {
+  font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+/* ====== Grid background helper ====== */
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ====== Scrollbar ====== */
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
