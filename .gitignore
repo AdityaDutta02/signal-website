@@ -5,3 +5,5 @@ out
 .env*
 !.env.example
 .data
+.claude
+.playwright-mcp
