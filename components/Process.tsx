@@ -50,8 +50,8 @@ function ProcessStep({ step, isLast }: { step: Step; isLast: boolean }) {
       onMouseLeave={() => setHover(false)}
     >
       <div
-        className="font-display leading-none tracking-tighter"
-        style={{ fontSize: hover ? "96px" : "84px", transition: "font-size 220ms cubic-bezier(0.16,1,0.3,1)" }}
+        className={`font-display leading-none tracking-tighter ${hover ? "text-pink" : "text-fg"}`}
+        style={{ fontSize: "84px", transition: "color 200ms ease-out" }}
       >
         {step.num}
       </div>
