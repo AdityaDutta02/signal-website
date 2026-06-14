@@ -46,19 +46,24 @@ export function MethodologyView() {
           </div>
 
           <h1
-            className="mt-10 md:mt-14 font-display leading-[0.88] tracking-tight anim-fade-in"
-            style={{ fontSize: "clamp(56px, 10vw, 144px)", animationDelay: "180ms" }}
+            className="mt-10 md:mt-14 font-display leading-[0.86] tracking-tight anim-fade-in"
+            style={{ fontSize: "clamp(64px, 11vw, 168px)", animationDelay: "180ms" }}
           >
-            every signal is<br />
-            connected<span className="text-pink">.</span><br />
-            fix one - three<br />
-            others light up<span className="text-pink">.</span>
+            18 signals<span className="text-pink">.</span><br />
+            3 do the lift<span className="text-pink">.</span>
           </h1>
 
-          <div className="mt-12 grid grid-cols-12 gap-6 md:gap-10 anim-fade-in items-end" style={{ animationDelay: "340ms" }}>
+          <h2
+            className="mt-6 md:mt-8 font-display leading-[0.92] tracking-tight anim-fade-in max-w-[920px]"
+            style={{ fontSize: "clamp(28px, 4.4vw, 60px)", animationDelay: "280ms" }}
+          >
+            The other 15 are necessary. These three decide whether an engine cites you.
+          </h2>
+
+          <div className="mt-12 grid grid-cols-12 gap-6 md:gap-10 anim-fade-in items-end" style={{ animationDelay: "380ms" }}>
             <div className="col-span-12 md:col-span-7">
               <p className="text-base md:text-lg leading-snug max-w-[600px]">
-                Eighteen signals across four blocks - entity, on-page, content, off-site. Block A and D carry multipliers (1.5× and 1.4×) because they move citation share the hardest. Raw max 115, normalised to /100.
+                Block A (entity, ×1.5) and Block D (off-site, ×1.4) carry the multipliers because they decide whether engines can identify you and trust you. Published rubric. Versioned. Same one we use on every engagement.
               </p>
             </div>
             <div className="col-span-12 md:col-span-5 grid grid-cols-3 border-2 border-line">
@@ -151,12 +156,13 @@ export function MethodologyView() {
             </div>
           </div>
 
-          {/* GRID view: 6 cols × 3 rows of compact cells. Click → highlight in graph. */}
+          {/* GRID view: 6 cols × 3 rows of compact cells. Filter dims, doesn't hide. */}
           {ledgerView === "grid" && (
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 border-2 border-line">
               {signals.map((s, i) => {
                 const isLast = i === signals.length - 1;
                 const isActive = selected?.id === s.id;
+                const isDim = !matches(s);
                 const colMod = i % 6;
                 const rowMod = Math.floor(i / 6);
                 return (
@@ -164,11 +170,11 @@ export function MethodologyView() {
                     key={s.id}
                     onClick={() => setSelected(s)}
                     title={s.title}
-                    className={`relative text-left p-3 md:p-4 transition-colors duration-150 ${
+                    className={`relative text-left p-3 md:p-4 transition-all duration-150 ${
                       isActive ? "bg-pink-wash" : "hover:bg-pink-wash/60"
-                    } ${colMod < 5 && !isLast ? "border-r-2 border-line" : ""} ${
-                      rowMod < 2 ? "border-b-2 border-line" : ""
-                    }`}
+                    } ${isDim ? "opacity-30" : "opacity-100"} ${
+                      colMod < 5 && !isLast ? "border-r-2 border-line" : ""
+                    } ${rowMod < 2 ? "border-b-2 border-line" : ""}`}
                   >
                     <div className="flex items-baseline justify-between mb-2">
                       <span className="font-display text-2xl md:text-3xl tracking-tighter leading-none text-pink">
@@ -190,17 +196,21 @@ export function MethodologyView() {
             </div>
           )}
 
-          {/* BLOCKS view: 4 columns, signals grouped by A/B/C/D. */}
+          {/* BLOCKS view: 4 columns, signals grouped by A/B/C/D. Filter dims rows + faded block headers. */}
           {ledgerView === "blocks" && (
             <div className="grid grid-cols-1 md:grid-cols-4 border-2 border-line">
               {blocks.map((b, bi) => {
                 const blockSignals = signals.filter((s) => s.block === b.key);
+                // A block header dims only when the active filter excludes the whole block
+                const isBlockDimmed =
+                  (filter !== "all" && filter !== "fix" && filter !== b.key) ||
+                  (filter === "fix" && blockSignals.every((s) => !s.fix));
                 return (
                   <div
                     key={b.key}
                     className={`${bi < blocks.length - 1 ? "border-b-2 md:border-b-0 md:border-r-2 border-line" : ""}`}
                   >
-                    <div className="px-3 py-3 border-b-2 border-line bg-pink-wash/40">
+                    <div className={`px-3 py-3 border-b-2 border-line bg-pink-wash/40 transition-opacity ${isBlockDimmed ? "opacity-30" : "opacity-100"}`}>
                       <div className="flex items-baseline justify-between">
                         <div className="font-display text-2xl tracking-tighter leading-none">
                           <span className="text-pink">{b.key}</span>
@@ -216,13 +226,14 @@ export function MethodologyView() {
                     <div className="divide-y-2 divide-line">
                       {blockSignals.map((s) => {
                         const isActive = selected?.id === s.id;
+                        const isDim = !matches(s);
                         return (
                           <button
                             key={s.id}
                             onClick={() => setSelected(s)}
-                            className={`w-full text-left flex items-baseline gap-2 px-3 py-2 transition-colors duration-150 ${
+                            className={`w-full text-left flex items-baseline gap-2 px-3 py-2 transition-all duration-150 ${
                               isActive ? "bg-pink-wash" : "hover:bg-pink-wash/60"
-                            }`}
+                            } ${isDim ? "opacity-30" : "opacity-100"}`}
                           >
                             <span className="font-display text-base text-pink tracking-tighter leading-none w-6 flex-shrink-0">
                               {String(s.num).padStart(2, "0")}
@@ -239,24 +250,29 @@ export function MethodologyView() {
             </div>
           )}
 
-          {/* LIST view: original LedgerRow but with the filter chips inline. */}
+          {/* LIST view: only matching signals, scrollable inside the viewport. */}
           {ledgerView === "list" && (
             <div className="border-2 border-line max-h-[calc(100vh-260px)] overflow-y-auto">
-              {signals.map((s, i) => (
+              {visible.map((s, i) => (
                 <LedgerRow
                   key={s.id}
                   signal={s}
-                  dimmed={!matches(s)}
-                  divider={i < signals.length - 1}
+                  dimmed={false}
+                  divider={i < visible.length - 1}
                   active={selected?.id === s.id}
                   onView={() => setSelected(s)}
                 />
               ))}
+              {visible.length === 0 && (
+                <div className="px-5 py-8 font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted text-center">
+                  no signals match this filter
+                </div>
+              )}
             </div>
           )}
 
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted">
-            <span>showing 18 / 18 · click any signal to load it in the graph above</span>
+            <span>showing {String(visible.length).padStart(2, "0")} / {signals.length} · click any signal to load it in the graph above</span>
             <span><span className="inline-block w-1.5 h-1.5 bg-pink mr-1.5 align-middle" />top-3 fix</span>
           </div>
         </div>
