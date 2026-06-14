@@ -87,7 +87,8 @@ export function Nav() {
         </form>
 
         {/* Mobile nav */}
-        <div className="md:hidden flex items-center gap-4 pr-6 font-mono text-[10px] font-bold tracking-widest uppercase">
+        <div className="md:hidden flex items-center gap-3 pr-6 font-mono text-[10px] font-bold tracking-widest uppercase">
+          <SlotBadge variant="nav-mobile" />
           <NavLink to="/work" className={linkClass}>work</NavLink>
           <NavLink to="/methodology" className={linkClass}>method</NavLink>
           <NavLink to="/notes" className={linkClass}>notes</NavLink>
