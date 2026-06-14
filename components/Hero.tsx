@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { SlotBadge } from "./SlotBadge";
+import { HeroGeometric } from "./HeroGeometric";
 import { openExitIntentModal } from "./ExitIntentModal";
 
 export function Hero() {
@@ -21,21 +22,27 @@ export function Hero() {
           <SlotBadge variant="inline" className="hidden md:inline-flex" />
         </div>
 
-        <div className="relative mt-10 md:mt-14">
-          <h1
-            className="relative font-display leading-[0.88] tracking-tight anim-fade-in"
-            style={{ fontSize: "clamp(56px, 11vw, 152px)", animationDelay: "260ms" }}
-          >
-            ChatGPT can&apos;t<br />
-            find you<span className="text-pink">.</span>
-          </h1>
+        <div className="relative mt-10 md:mt-14 grid grid-cols-12 gap-6 md:gap-10 items-center">
+          <div className="col-span-12 lg:col-span-8">
+            <h1
+              className="relative font-display leading-[0.88] tracking-tight anim-fade-in"
+              style={{ fontSize: "clamp(56px, 10vw, 144px)", animationDelay: "260ms" }}
+            >
+              ChatGPT can&apos;t<br />
+              find you<span className="text-pink">.</span>
+            </h1>
 
-          <h2
-            className="relative mt-6 md:mt-8 font-display leading-[0.92] tracking-tight anim-fade-in max-w-[820px]"
-            style={{ fontSize: "clamp(32px, 5.5vw, 80px)", animationDelay: "360ms" }}
-          >
-            We fix it in <span className="text-pink">6 days</span>.
-          </h2>
+            <h2
+              className="relative mt-6 md:mt-8 font-display leading-[0.92] tracking-tight anim-fade-in max-w-[820px]"
+              style={{ fontSize: "clamp(32px, 5vw, 72px)", animationDelay: "360ms" }}
+            >
+              We fix it in <span className="text-pink">6 days</span>.
+            </h2>
+          </div>
+
+          <div className="col-span-12 lg:col-span-4 lg:pl-4 max-h-[420px]">
+            <HeroGeometric />
+          </div>
         </div>
 
         <div className="relative mt-10 md:mt-14 grid grid-cols-12 gap-6 md:gap-10 items-end anim-fade-in" style={{ animationDelay: "480ms" }}>
