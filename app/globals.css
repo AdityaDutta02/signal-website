@@ -76,6 +76,17 @@ body {
 .anim-pulse-soft { animation: pulse-soft 3s ease-in-out infinite; }
 .anim-scale-in { animation: scale-in 280ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 
+/* Force a clean compositor layer so display-weight text stays sharp through
+   transform animations (rotate, scale, translate). Apply to any wrapper that
+   has `transition-transform` and contains real type. */
+.gpu-text {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  -webkit-font-smoothing: antialiased;
+}
+
 /* ====== Typographic utilities ====== */
 
 .font-display {
