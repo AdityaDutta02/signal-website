@@ -21,14 +21,10 @@ export function MethodologyView() {
   const [selected, setSelected] = useState<Signal | null>(signals.find(s => s.fix) ?? null);
   const [filter, setFilter] = useState<Filter>("all");
   const [rubricFilter, setRubricFilter] = useState<RubricFilter>("all");
-  const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
+  const [expandedRow, setExpandedRow] = useState<string | null>(null);
 
   const toggleRow = (id: string) => {
-    setExpandedRows(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) { next.delete(id); } else { next.add(id); }
-      return next;
-    });
+    setExpandedRow(prev => (prev === id ? null : id));
   };
 
   const rubricVisible = rubricFilter === "all"
@@ -236,7 +232,7 @@ export function MethodologyView() {
               <RubricRow
                 key={s.id}
                 signal={s}
-                expanded={expandedRows.has(s.id)}
+                expanded={expandedRow === s.id}
                 onToggle={() => toggleRow(s.id)}
                 divider={i < rubricVisible.length - 1}
               />
