@@ -69,9 +69,9 @@ export function Pricing() {
               ))}
             </ul>
           </div>
-          <div className="col-span-12 md:col-span-5 pt-8 md:pl-10">
-            <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/60 mb-5">- what you don&apos;t</div>
-            <ul className="divide-y divide-bg/15 border-y-2 border-bg/30">
+          <div className="col-span-12 md:col-span-5 md:ml-10 bg-bg text-fg p-6 md:p-8 border-2 border-bg">
+            <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mb-5">- what you don&apos;t</div>
+            <ul className="divide-y divide-fg/15 border-y-2 border-fg/30">
               {[
                 "no retainer",
                 "no monthly content",
@@ -80,8 +80,8 @@ export function Pricing() {
                 "no junior layer",
               ].map((item) => (
                 <li key={item} className="flex items-baseline gap-4 py-3.5">
-                  <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/40 w-6 flex-shrink-0">×</span>
-                  <span className="font-display text-lg md:text-xl tracking-tight text-bg/75 leading-tight line-through decoration-bg/30 decoration-[1.5px]">{item}</span>
+                  <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg/50 w-6 flex-shrink-0">×</span>
+                  <span className="font-display text-lg md:text-xl tracking-tight text-fg leading-tight line-through decoration-fg/60 decoration-[1.5px]">{item}</span>
                 </li>
               ))}
             </ul>
