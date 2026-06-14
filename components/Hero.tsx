@@ -22,16 +22,6 @@ export function Hero() {
         </div>
 
         <div className="relative mt-10 md:mt-14">
-          <div
-            className="absolute right-[-20px] md:right-[-40px] lg:right-[-60px] -top-2 md:-top-6 lg:-top-10 font-display leading-[0.78] text-pink tracking-tighter pointer-events-none select-none anim-fade-in"
-            style={{
-              fontSize: "clamp(120px, 22vw, 320px)",
-              animationDelay: "120ms",
-            }}
-          >
-            6 days
-          </div>
-
           <h1
             className="relative font-display leading-[0.88] tracking-tight anim-fade-in"
             style={{ fontSize: "clamp(56px, 11vw, 152px)", animationDelay: "260ms" }}
@@ -42,9 +32,9 @@ export function Hero() {
 
           <h2
             className="relative mt-6 md:mt-8 font-display leading-[0.92] tracking-tight anim-fade-in max-w-[820px]"
-            style={{ fontSize: "clamp(28px, 4.4vw, 64px)", animationDelay: "360ms" }}
+            style={{ fontSize: "clamp(32px, 5.5vw, 80px)", animationDelay: "360ms" }}
           >
-            We fix it in 6 days.
+            We fix it in <span className="text-pink">6 days</span>.
           </h2>
         </div>
 
