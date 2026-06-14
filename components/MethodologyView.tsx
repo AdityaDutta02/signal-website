@@ -55,7 +55,7 @@ export function MethodologyView() {
           <div className="mt-10 md:mt-12 grid grid-cols-12 gap-6 md:gap-10 anim-fade-in items-end" style={{ animationDelay: "280ms" }}>
             <div className="col-span-12 md:col-span-7">
               <p className="text-base md:text-lg leading-snug max-w-[560px] text-fg-muted">
-                Eighteen checks across four categories &mdash; schema, on-page, content, off-site. Each scored 0&ndash;5, weighted, rolled up to a number out of 100. Same rubric on every site.
+                Eighteen things we check across four categories &mdash; schema, on-page, content, off-site. The graph below shows the lot. Click any to see what goes wrong and what we ship.
               </p>
             </div>
             <div className="col-span-12 md:col-span-5 grid grid-cols-3 border-2 border-line">
@@ -68,8 +68,8 @@ export function MethodologyView() {
                 <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">categories</div>
               </div>
               <div className="p-4 md:p-5">
-                <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">/100</div>
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">scale</div>
+                <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">412</div>
+                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">sites scanned</div>
               </div>
             </div>
           </div>
@@ -203,13 +203,8 @@ export function MethodologyView() {
                     className={`${bi < blocks.length - 1 ? "border-b-2 md:border-b-0 md:border-r-2 border-line" : ""}`}
                   >
                     <div className={`px-3 py-3 border-b-2 border-line bg-pink-wash/40 transition-opacity ${isBlockDimmed ? "opacity-30" : "opacity-100"}`}>
-                      <div className="flex items-baseline justify-between">
-                        <div className="font-display text-2xl tracking-tighter leading-none">
-                          <span className="text-pink">{b.key}</span>
-                        </div>
-                        <div className={`font-mono text-[9px] font-bold tracking-widest uppercase ${b.multiplier > 1 ? "text-pink" : "text-fg-muted"}`}>
-                          × {b.multiplier.toFixed(1)}
-                        </div>
+                      <div className="font-display text-2xl tracking-tighter leading-none">
+                        <span className="text-pink">{b.key}</span>
                       </div>
                       <div className="mt-1 font-mono text-[9px] font-bold tracking-widest uppercase text-fg-muted">
                         {b.label}
