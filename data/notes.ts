@@ -146,7 +146,7 @@ export const notes: Note[] = [
     readTime: "9 min",
     tag: "playbook",
     excerpt:
-      "A detailed walk-through of the three signals we fixed on Vellum's marketing site, the diffs we shipped, and the +33 average score delta on delivery.",
+      "A detailed walk-through of the three signals we fixed on Vellum's marketing site, the diffs we shipped, and the score delta we observed on delivery.",
     body: [
       {
         paragraphs: [

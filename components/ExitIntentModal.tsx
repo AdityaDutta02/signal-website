@@ -198,7 +198,7 @@ export function ExitIntentModal() {
             </h3>
             <p className="mt-4 text-sm leading-snug max-w-[420px]">
               The 18 signals we test, the engines we test them on, and the fix patterns
-              that moved scores +33 average across three pilots. One email. One PDF. Nothing else.
+              we shipped on the first three pilots. One email. One PDF. Nothing else.
             </p>
 
             <form

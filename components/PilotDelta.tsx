@@ -3,16 +3,24 @@
 import Link from "next/link";
 import { useInView } from "../hooks/useInView";
 import { useCountUp } from "../hooks/useCountUp";
+import { cases, avgDelta as avgDeltaForCase } from "@/data/cases";
 
 type Engine = { engine: string; before: number; after: number };
 
-const engines: Engine[] = [
-  { engine: "chatgpt", before: 32, after: 71 },
-  { engine: "perplexity", before: 28, after: 64 },
-  { engine: "gemini", before: 41, after: 70 },
-];
+// Average across all three pilots' per-engine averages. Sourced from
+// data/cases.ts so the home block can't drift from /work numbers.
+const avgDelta = Math.round(
+  cases.reduce((sum, c) => sum + avgDeltaForCase(c), 0) / cases.length,
+);
 
-const avgDelta = Math.round(engines.reduce((a, e) => a + (e.after - e.before), 0) / engines.length);
+// Cross-pilot averaged engine scores (rounded) for the visual breakdown.
+const engineNames = ["chatgpt", "perplexity", "gemini"] as const;
+const engines: Engine[] = engineNames.map((name) => {
+  const rows = cases.flatMap((c) => c.scores.filter((s) => s.engine === name));
+  const before = Math.round(rows.reduce((a, s) => a + s.before, 0) / rows.length);
+  const after = Math.round(rows.reduce((a, s) => a + s.after, 0) / rows.length);
+  return { engine: name, before, after };
+});
 
 const stripedPink =
   "repeating-linear-gradient(45deg, var(--pink) 0 8px, var(--bg) 8px 14px)";

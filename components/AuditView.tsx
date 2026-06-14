@@ -12,7 +12,7 @@ type AuditDataShape = typeof auditData;
 const AuditCtx = createContext<AuditDataShape>(auditData);
 const useAuditData = (): AuditDataShape => useContext(AuditCtx);
 
-const PINK_TOKENS = ["chatgpt", "perplexity", "claude", "gemini", "6 days", "day 7", "+15", "+33"];
+const PINK_TOKENS = ["chatgpt", "perplexity", "claude", "gemini", "6 days", "day 7"];
 
 function renderOneLiner(line: string): React.ReactNode {
   if (!line) return null;

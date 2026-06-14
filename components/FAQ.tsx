@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: "Who actually does the work?",
-    a: "Two people. The founder (ex-staff engineer, eight years across three B2B SaaS) writes the diff. A second engineer reviews. No agency tower, no junior layer, no offshored content team.",
+    a: "Two people. Aakif (SEO + content, 11 years) runs the audit, scoring, and content rewrites. Aditya (AI + tech, 9 years) writes the patches, runs the eval harness across the four engines, and ships the PR. Same two on every engagement.",
   },
 ];
 
