@@ -128,18 +128,17 @@ export default function WorkPage() {
           </div>
 
           <h1
-            className="mt-10 md:mt-14 font-display leading-[0.88] tracking-tight anim-fade-in"
-            style={{ fontSize: "clamp(56px, 10vw, 144px)", animationDelay: "180ms" }}
+            className="mt-10 md:mt-14 font-display leading-[0.86] tracking-tight anim-fade-in"
+            style={{ fontSize: "clamp(64px, 11vw, 168px)", animationDelay: "180ms" }}
           >
-            case work<span className="text-pink">.</span><br />
             three pilots<span className="text-pink">.</span><br />
-            measured deltas<span className="text-pink">.</span>
+            measured lift<span className="text-pink">.</span>
           </h1>
 
           <div className="mt-12 grid grid-cols-12 gap-6 md:gap-10 anim-fade-in items-end" style={{ animationDelay: "340ms" }}>
             <div className="col-span-12 md:col-span-7">
-              <p className="text-base md:text-lg leading-snug max-w-[600px]">
-                Every Signal engagement ships in six days. Day 7 is the final scan: same prompts, same engines, same rubric. If the score hasn&apos;t cleared +15, we keep building - on us. The proof is in the delta.
+              <p className="text-lg md:text-xl leading-snug max-w-[560px]">
+                Day 0 vs day 7. Same prompts. Same engines. No re-prompting. The proof is in the delta.
               </p>
             </div>
             <HeroStats />
@@ -164,22 +163,17 @@ export default function WorkPage() {
                 six days<span className="text-pink">.</span>
               </h2>
               <p className="mt-6 max-w-[440px] text-bg/80 leading-snug">
-                Same process. Same rubric. Same day 7 final scan. Free scan to start - no call, no account, PDF emailed in 90 seconds.
+                Free scan to start. No call, no account, PDF in 90 seconds.
               </p>
             </div>
             <div className="col-span-12 md:col-span-5">
-              <a
-                href="#audit-input"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("audit-input")?.focus();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
+              <Link
+                href="/#hero-audit"
                 className="group flex items-center justify-between gap-4 bg-pink text-bg px-6 py-6 hover:bg-bg hover:text-fg transition-colors duration-200 border-2 border-pink hover:border-bg"
               >
                 <span className="font-display text-3xl md:text-4xl tracking-tight">scan my site</span>
                 <ArrowRight className="w-8 h-8 transition-transform duration-200 group-hover:translate-x-2" strokeWidth={2.5} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
