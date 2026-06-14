@@ -16,8 +16,6 @@ export function Hero() {
           <span className="w-2 h-2 bg-pink" />
           <span>aeo</span>
           <span className="text-fg-muted">/</span>
-          <span>six-day rebuild</span>
-          <span className="text-fg-muted">/</span>
           <span>seed–series a b2b saas</span>
           <span className="text-fg-muted hidden md:inline">/</span>
           <SlotBadge variant="inline" className="hidden md:inline-flex" />
@@ -25,29 +23,35 @@ export function Hero() {
 
         <div className="relative mt-10 md:mt-14">
           <div
-            className="absolute right-[-30px] md:right-[-60px] lg:right-[-100px] -top-6 md:-top-10 lg:-top-20 font-display leading-[0.78] text-pink tracking-tighter pointer-events-none select-none anim-fade-in"
+            className="absolute right-[-20px] md:right-[-40px] lg:right-[-60px] -top-2 md:-top-6 lg:-top-10 font-display leading-[0.78] text-pink tracking-tighter pointer-events-none select-none anim-fade-in"
             style={{
-              fontSize: "clamp(200px, 38vw, 520px)",
+              fontSize: "clamp(120px, 22vw, 320px)",
               animationDelay: "120ms",
             }}
           >
-            06
+            6 days
           </div>
 
           <h1
             className="relative font-display leading-[0.88] tracking-tight anim-fade-in"
             style={{ fontSize: "clamp(56px, 11vw, 152px)", animationDelay: "260ms" }}
           >
-            chatgpt can&apos;t<br />
-            find your site<span className="text-pink">.</span><br />
-            we fix it<span className="text-pink">.</span>
+            ChatGPT can&apos;t<br />
+            find you<span className="text-pink">.</span>
           </h1>
+
+          <h2
+            className="relative mt-6 md:mt-8 font-display leading-[0.92] tracking-tight anim-fade-in max-w-[820px]"
+            style={{ fontSize: "clamp(28px, 4.4vw, 64px)", animationDelay: "360ms" }}
+          >
+            We fix it in 6 days.
+          </h2>
         </div>
 
-        <div className="relative mt-12 md:mt-16 grid grid-cols-12 gap-6 md:gap-10 items-end anim-fade-in" style={{ animationDelay: "440ms" }}>
+        <div className="relative mt-10 md:mt-14 grid grid-cols-12 gap-6 md:gap-10 items-end anim-fade-in" style={{ animationDelay: "480ms" }}>
           <div className="col-span-12 md:col-span-7">
             <p className="text-base md:text-lg leading-snug max-w-[540px]">
-              A productised AEO build for seed–series A B2B SaaS. We score your site across 18 signals, ship the fix to your repo in six working days, and verify your score moved +15 before we call it shipped.
+              We score your site across 18 signals, ship the fix to your repo, and re-scan on day 7. Built for seed&ndash;series A B2B SaaS.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <span className="font-mono text-[11px] tracking-widest uppercase text-fg-muted">or</span>
@@ -77,14 +81,12 @@ export function Hero() {
               <div className="font-mono text-[9px] md:text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">flat fee</div>
             </div>
             <div className="p-4 md:p-5 border-r-2 border-line">
-              <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">
-                <span className="text-pink">+</span>15
-              </div>
-              <div className="font-mono text-[9px] md:text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">ship floor</div>
-            </div>
-            <div className="p-4 md:p-5">
               <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">18</div>
               <div className="font-mono text-[9px] md:text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">signals</div>
+            </div>
+            <div className="p-4 md:p-5">
+              <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">04</div>
+              <div className="font-mono text-[9px] md:text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">engines</div>
             </div>
           </div>
         </div>
