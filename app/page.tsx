@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { AuditForm } from "@/components/AuditForm";
 import { SlotBadge } from "@/components/SlotBadge";
+import { PdfMarqueeBar } from "@/components/PdfMarqueeBar";
 import {
   faqPageGraph,
   organizationGraph,
@@ -47,6 +48,8 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLdScript(rubricHowToGraph) }}
       />
+
+      <PdfMarqueeBar />
 
       {/* ────────── HERO ────────── */}
       <section className="relative border-b-2 border-line overflow-hidden">
