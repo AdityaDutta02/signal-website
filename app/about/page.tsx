@@ -61,8 +61,8 @@ const OPERATORS: Operator[] = [
     ],
     shipped: [
       { client: "vellum", what: "ssr migration · day 3", metric: "edge render, gptbot allow" },
-      { client: "linear-adjacent fintech", what: "schema patch · 4 days", metric: "112 routes covered" },
-      { client: "two stealth co.", what: "llms.txt + ai sitemap", metric: "perplexity citation +6x" },
+      { client: "stack foundry", what: "schema patch · 4 days", metric: "112 routes covered" },
+      { client: "numerade", what: "llms.txt + ai sitemap", metric: "perplexity citation lift" },
     ],
     writing: [
       { title: "running the eval harness against 4 engines", where: "/notes" },
@@ -107,8 +107,8 @@ export default function AboutPage() {
             {[
               { n: "02", l: "operators" },
               { n: "00", l: "PMs · AMs" },
-              { n: "27", l: "sites shipped" },
-              { n: "+33", l: "avg. delivery delta" },
+              { n: "03", l: "pilots shipped" },
+              { n: "412", l: "sites audited" },
             ].map((s, i) => (
               <div key={s.l} className={`p-5 md:p-6 ${i < 3 ? "border-r-2 border-line" : ""} ${i < 2 ? "border-b-2 md:border-b-0 border-line" : ""}`}>
                 <div className="font-display text-4xl md:text-5xl leading-none tracking-tighter">{s.n}</div>

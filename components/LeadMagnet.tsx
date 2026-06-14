@@ -34,7 +34,7 @@ export function LeadMagnet() {
                   <div className="mt-auto pt-6 border-t-2 border-line">
                     <div className="font-mono text-[9px] tracking-widest uppercase text-fg-muted leading-relaxed">
                       412 sites scanned<br />
-                      18 signals · 5 categories<br />
+                      18 signals · 4 blocks<br />
                       written nov &apos;25
                     </div>
                     <div className="mt-3 font-display text-2xl">signal<span className="text-pink">*</span></div>

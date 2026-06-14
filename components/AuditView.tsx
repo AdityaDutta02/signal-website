@@ -159,7 +159,7 @@ function ScanningState({ domain, step }: { domain: string; step: number }) {
       <div className="max-w-3xl mx-auto px-6 md:px-10 py-16 md:py-24">
         <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-pink flex items-center gap-2">
           <span className="w-2 h-2 bg-pink anim-blink" />
-          scanning · 18 signals · 5 categories
+          scanning · 18 signals · 4 blocks
         </div>
 
         <h1 className="mt-8 font-display text-5xl md:text-7xl leading-[0.88] tracking-tight">

@@ -113,7 +113,7 @@ function PDFCover() {
           <div className="mt-auto pt-6 border-t-2 border-bg/20">
             <div className="font-mono text-[9px] tracking-widest uppercase text-bg/50 leading-relaxed">
               412 sites scanned<br />
-              18 signals · 5 categories<br />
+              18 signals · 4 blocks<br />
               written nov &apos;25
             </div>
             <div className="mt-3 flex items-center justify-between">
@@ -327,7 +327,7 @@ export default function ReportPage() {
               24 chapters<span className="text-pink">.</span>
             </h2>
             <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted">
-              18 signals · 5 clusters · 412 audits
+              18 signals · 4 blocks · 412 audits
             </div>
           </div>
 
