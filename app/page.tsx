@@ -60,26 +60,25 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-6 md:px-10 pt-14 md:pt-24 pb-14 md:pb-20">
           <div className="flex items-center gap-3 font-mono text-[11px] font-bold tracking-widest uppercase anim-fade-in">
             <span className="w-2 h-2 bg-pink" />
-            <span>aeo build · 6 days · $2,490</span>
+            <span>aeo · 6 days · $2,490</span>
             <span className="text-fg-muted hidden md:inline">/</span>
             <SlotBadge variant="inline" className="hidden md:inline-flex" />
           </div>
 
           <h1
-            className="mt-10 md:mt-14 font-display leading-[0.88] tracking-tight anim-fade-in max-w-[1200px]"
-            style={{ fontSize: "clamp(56px, 9.5vw, 144px)", animationDelay: "180ms" }}
+            className="mt-10 md:mt-14 font-display leading-[0.86] tracking-tight anim-fade-in max-w-[1200px]"
+            style={{ fontSize: "clamp(64px, 11vw, 168px)", animationDelay: "180ms" }}
           >
-            chatgpt can&apos;t<br />
-            find your site<span className="text-pink">.</span><br />
-            we ship the fix<br />
-            in six days<span className="text-pink">.</span>
+            chatgpt<br />
+            can&apos;t cite you<span className="text-pink">.</span><br />
+            we fix that<span className="text-pink">.</span>
           </h1>
 
           <p
-            className="mt-10 md:mt-12 max-w-[640px] text-base md:text-lg leading-snug anim-fade-in"
+            className="mt-10 md:mt-12 max-w-[560px] text-lg md:text-xl leading-snug anim-fade-in"
             style={{ animationDelay: "320ms" }}
           >
-            Signal is an AEO build service for seed-series A B2B SaaS. We score your site across 18 signals, ship the fix to your repo in six working days, and verify the score moved +15 before we call it shipped.
+            18 signals scored. fix shipped to your repo. +15 score lift verified. six days.
           </p>
 
           <div
@@ -88,7 +87,7 @@ export default function HomePage() {
           >
             <AuditForm variant="hero" autoFocusId="hero-audit" />
             <div className="mt-3 font-mono text-[10px] tracking-widest uppercase text-fg-muted">
-              90s scan · 18 signals · no account · pdf to your inbox
+              90s scan · pdf in your inbox · no account
             </div>
           </div>
 
@@ -132,7 +131,7 @@ export default function HomePage() {
                 +{avgDelta}
               </div>
               <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted mt-2">
-                avg score delta · first 3 pilots · day 0 → day 7
+                avg lift · 3 pilots · day 0 → day 7
               </div>
             </div>
 
@@ -162,9 +161,9 @@ export default function HomePage() {
                 })}
               </div>
               <div className="mt-4 flex items-center justify-between font-mono text-[10px] tracking-widest uppercase text-fg-muted">
-                <span>same prompts. same engines. no re-prompting.</span>
+                <span>same prompts. no re-prompting.</span>
                 <Link href="/methodology" className="inline-flex items-center gap-1 hover:text-pink transition-colors">
-                  read methodology <ArrowUpRight className="w-3 h-3" strokeWidth={2.5} />
+                  how we score <ArrowUpRight className="w-3 h-3" strokeWidth={2.5} />
                 </Link>
               </div>
             </div>
@@ -179,8 +178,8 @@ export default function HomePage() {
             / 02 · what you get
           </div>
 
-          <h2 className="font-display text-4xl md:text-6xl leading-[0.95] tracking-tight max-w-[900px]">
-            one flat fee<span className="text-pink">.</span> one delivery window<span className="text-pink">.</span> one number to clear<span className="text-pink">.</span>
+          <h2 className="font-display leading-[0.9] tracking-tight max-w-[1100px]" style={{ fontSize: "clamp(48px, 7vw, 104px)" }}>
+            one fee<span className="text-pink">.</span> one window<span className="text-pink">.</span> one floor<span className="text-pink">.</span>
           </h2>
 
           <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-4 border-2 border-bg/30">
@@ -198,16 +197,16 @@ export default function HomePage() {
 
           <div className="mt-10 md:mt-14 flex flex-wrap items-end justify-between gap-6">
             <div>
-              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60">if we miss</div>
-              <div className="mt-2 font-display text-2xl md:text-3xl tracking-tight max-w-[520px] leading-tight">
-                we keep building until the day-7 scan clears +15<span className="text-pink">.</span> no clock, no upsell.
+              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60">if we miss the floor</div>
+              <div className="mt-2 font-display tracking-tight max-w-[600px] leading-[0.95]" style={{ fontSize: "clamp(28px, 3.4vw, 48px)" }}>
+                we keep building<span className="text-pink">.</span> no clock<span className="text-pink">.</span> no upsell<span className="text-pink">.</span>
               </div>
             </div>
             <Link
               href="/pricing"
               className="inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-widest uppercase border-b-2 border-bg/40 hover:border-pink hover:text-pink transition-colors"
             >
-              full pricing breakdown <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2.5} />
+              full pricing <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2.5} />
             </Link>
           </div>
         </div>
@@ -220,13 +219,13 @@ export default function HomePage() {
             / 03 · scan
           </div>
 
-          <h2 className="font-display text-4xl md:text-6xl leading-[0.95] tracking-tight max-w-[800px]">
+          <h2 className="font-display leading-[0.88] tracking-tight max-w-[900px]" style={{ fontSize: "clamp(56px, 8.5vw, 128px)" }}>
             drop your URL<span className="text-pink">.</span><br />
-            ninety seconds<span className="text-pink">.</span> no account<span className="text-pink">.</span>
+            ninety seconds<span className="text-pink">.</span>
           </h2>
 
-          <p className="mt-6 max-w-[560px] text-base md:text-lg leading-snug">
-            We run an 18-signal scan against your live site and email you the report. If you want the fix, you reply. If not, you keep the report.
+          <p className="mt-6 max-w-[520px] text-lg md:text-xl leading-snug">
+            18 signals scored. PDF in your inbox. want the fix? reply. don&apos;t? keep the PDF.
           </p>
 
           <div className="mt-10">
