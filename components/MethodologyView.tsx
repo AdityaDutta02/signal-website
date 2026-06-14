@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { signals, blocks, type Block, type Signal } from "@/data/signals";
-import { SignalsGraph } from "@/components/SignalsGraph";
 import { ArrowRight, ArrowUpRight, ChevronDown, ChevronUp, Download } from "lucide-react";
 
 type Filter = Block | "all" | "fix";
@@ -115,20 +114,6 @@ export function MethodologyView() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      <section className="border-b-2 border-line bg-bg">
-        <div className="max-w-8xl mx-auto grid grid-cols-12">
-          <div className="col-span-12 md:col-span-8 border-b-2 md:border-b-0 md:border-r-2 border-line relative">
-            <div className="h-[440px] md:h-[720px] relative bg-bg">
-              <SignalsGraph mode="full" onSelect={(s) => setSelected(s)} />
-              <div className="absolute top-4 left-4 font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted pointer-events-none">
-                / signal map · click any node
-              </div>
-            </div>
-          </div>
-          <DetailPanel signal={selected} />
         </div>
       </section>
 
@@ -358,60 +343,6 @@ function RubricRow({
           </div>
         </div>
       )}
-    </div>
-  );
-}
-
-function DetailPanel({ signal }: { signal: Signal | null }) {
-  if (!signal) {
-    return (
-      <div className="col-span-12 md:col-span-4 p-8 md:p-10 bg-bg flex items-center justify-center min-h-[300px] md:min-h-[720px]">
-        <div className="text-center font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted leading-relaxed">
-          click any node<br />
-          to see the<br />
-          full signal
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div key={signal.id} className="col-span-12 md:col-span-4 p-8 md:p-10 bg-pink-wash flex flex-col anim-fade-in">
-      <div className="flex flex-wrap items-baseline gap-2">
-        <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-pink bg-bg px-2 py-1 border-2 border-pink">
-          block {signal.block}
-        </span>
-        {signal.fix && (
-          <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg bg-pink px-2 py-1">
-            top 3 fix
-          </span>
-        )}
-        <span className="font-mono text-[10px] tracking-widest uppercase text-fg-muted ml-auto">
-          signal {String(signal.num).padStart(2, "0")} / 18
-        </span>
-      </div>
-
-      <div className="mt-6 font-display leading-[0.78] tracking-tighter text-pink" style={{ fontSize: "clamp(110px, 14vw, 180px)" }}>
-        {String(signal.num).padStart(2, "0")}
-      </div>
-
-      <h3 className="mt-2 font-display text-3xl md:text-4xl tracking-tight leading-[0.95]">
-        {signal.title}<span className="text-pink">.</span>
-      </h3>
-
-      <div className="mt-8 border-t-2 border-line pt-5">
-        <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mb-2">
-          - the problem
-        </div>
-        <p className="text-sm md:text-base leading-snug">{signal.problem}</p>
-      </div>
-
-      <div className="mt-6 border-t-2 border-line pt-5">
-        <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-pink mb-2">
-          + the fix
-        </div>
-        <p className="text-sm md:text-base leading-snug">{signal.solution}</p>
-      </div>
     </div>
   );
 }
