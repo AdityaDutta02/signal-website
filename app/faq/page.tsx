@@ -16,7 +16,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       { q: "is the audit really free?", a: "Yes. Paste your URL on the home page. You'll have a per-prospect scorecard in 90 seconds - scored on the same 18-signal rubric we use for paid engagements. No email required to see the score. We ask for an email to send the PDF." },
       { q: "how is the score calculated?", a: "18 signals across 5 clusters: crawl access, render quality, schema coverage, content density, and title clarity. Each signal has a pass/fail criterion and a weight. The overall score is a weighted sum. The rubric is published on /methodology - you can reconstruct any score from the published weights." },
       { q: "which engines are covered?", a: "ChatGPT (GPT-4o), Perplexity, Google Gemini, and Anthropic Claude. We run the same prompt list against all four and score citation probability per engine. Copilot and You.com are on the roadmap for rubric v1.3." },
-      { q: "how accurate is the score?", a: "The rubric is a proxy for citation probability, not a guarantee. It's based on 412 audits and validated against observed citation deltas from our engagements. The +33 average delta is real - but your mileage depends on your stack, your content, and your competitive set." },
+      { q: "how accurate is the score?", a: "The rubric is a proxy for citation probability. It's based on 412 audits and observed citation deltas from past engagements. The +33 average delta is a historical pilot result, not a forward promise — your mileage depends on your stack, your content, and your competitive set." },
       { q: "how often can i scan the same URL?", a: "As often as you want. We cache results for 24 hours - if you scan the same URL twice in a day, you'll get the same scorecard. After 24 hours, we re-run the scan fresh." },
     ],
   },
@@ -27,7 +27,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     items: [
       { q: "what's in scope for the 6-day build?", a: "18-signal AEO audit, answer-first rewrites on your top 3 pages, schema.org coverage (Article, FAQ, Org, BreadcrumbList), robots.txt + llms.txt + AI sitemap, and SSR/hydration/bot-allow fixes where applicable. Everything is named in the engagement doc before you pay." },
       { q: "what's not in scope?", a: "Link building, paid media, general SEO consulting, content strategy beyond the 3 rewritten pages, CMS migrations, new feature development, or anything outside the 18-signal rubric. If you're unsure, book a fit check - we'll tell you before you pay." },
-      { q: "how long does it actually take?", a: "6 days from day 1 to final PR. Day 1 is the audit. Days 2–5 are the build. Day 6 is QA. Day 7 is the final scan + handoff. If the score hasn't cleared +15 by then, we keep building - extra days are on us, not you. The revision window runs for 7 days after handoff." },
+      { q: "how long does it actually take?", a: "6 days from day 1 to final PR. Day 1 is the audit. Days 2–5 are the build. Day 6 is QA. Day 7 is the final 18-signal re-scan + handoff. The revision window runs for 7 days after handoff." },
       { q: "who does the work?", a: "Aakif and Aditya. Same two operators on every engagement. No PM layer, no junior team, no account manager. Aakif owns the audit and content half. Aditya owns the build and tech half." },
       { q: "is it async or do we need to be on calls?", a: "Fully async. We post daily updates to a shared Slack channel or Google Doc. You don't need to be available - just check in when it suits you. The only call is the optional fit check before you commit." },
       { q: "what's the revision policy?", a: "One revision window: 7 days after day 6, scoped to the fixes shipped in the engagement. We don't do open-ended revision rounds. If you want changes outside the original scope, we scope a new engagement." },
@@ -50,8 +50,8 @@ const FAQ_CATEGORIES: FaqCategory[] = [
     eyebrow: "/ pricing & risk",
     items: [
       { q: "why $2,490?", a: "It's the price that covers 6 days of two senior operators' time without a retainer markup. We're not a $500 freelancer and we're not a $25k/mo agency. $2,490 is the flat price for the named scope. No surprises." },
-      { q: "what's the refund policy?", a: "14-day refund window from payment, before the build starts. Once we've shipped the first PR, the engagement is underway and the refund window closes. The +15 guarantee covers you from that point forward." },
-      { q: "how does the +15 guarantee work?", a: "On day 7 we run the same 18-signal scan on the same URL. If the score hasn't moved +15 from day 0, we don't call it shipped - we keep building on our dime until it clears. Same rubric, same weights, same URL. No re-scoping, no follow-on invoice." },
+      { q: "what's the refund policy?", a: "14-day refund window from payment, before the build starts. Once we've shipped the first PR, the engagement is underway and the refund window closes." },
+      { q: "what proves the work moved the needle?", a: "On day 7 we run the same 18-signal scan on the same URL, on the same rubric. You see the before/after numbers per engine. The pilots so far have shown lift; we don't promise any specific number on a new engagement." },
       { q: "what happens after handoff?", a: "You own all the assets. We don't retain access. The engagement ends at handoff - no retainer, no day-30 check-in obligation. If you want a fresh scan months later we'll run one for free, no commitment." },
       { q: "what are the payment terms?", a: "100% upfront via Stripe. No payment plan, no net-30. We reserve your slot with a $500 deposit - applied to the $2,490 total. Remaining balance due on day 1." },
     ],

@@ -311,8 +311,6 @@ export default function WorkDetailPage() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted border-b-2 border-line pb-8 mb-8">
             <span>delivered {c.shippedAt}</span>
             <span className="text-fg-muted/40">·</span>
-            <span>+15 ship floor cleared</span>
-            <span className="text-fg-muted/40">·</span>
             <span>18 signals tested</span>
             <span className="text-fg-muted/40">·</span>
             <span>3 engines</span>

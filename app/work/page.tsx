@@ -21,8 +21,8 @@ function HeroStats() {
         <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">avg delta</div>
       </div>
       <div className="p-4 md:p-5">
-        <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter"><span className="text-pink">+</span>15</div>
-        <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">ship floor</div>
+        <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">18</div>
+        <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">signals</div>
       </div>
     </div>
   );

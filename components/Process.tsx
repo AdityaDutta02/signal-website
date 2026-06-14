@@ -8,7 +8,7 @@ const steps: Step[] = [
   { num: "01", title: "first call", time: "0.5 days", body: "Thirty minutes. We pull your site live in front of ChatGPT and Perplexity and you watch what they actually say about you." },
   { num: "02", title: "gap analysis", time: "1.5 days", body: "We score 18 signals against your URLs, score your top 3 competitors the same way, and write you the delta in plain language." },
   { num: "03", title: "build the fix", time: "3 days", body: "Schema, render, robots, content, meta - shipped as a PR against your repo or staging branch. Reviewed line by line." },
-  { num: "04", title: "deploy + prove", time: "1 day", body: "We merge, re-crawl, final scan across all engines on day 7, and hand off the before/after report. If +15 isn't cleared, we keep building - on us." },
+  { num: "04", title: "deploy + scan", time: "1 day", body: "We merge, re-crawl, and run the final 18-signal scan across all engines on day 7. You get the before/after report and the keys." },
 ];
 
 export function Process() {

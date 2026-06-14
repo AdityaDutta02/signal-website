@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { GuaranteeBlock } from "@/components/GuaranteeBlock";
 import { FitCheckCTA } from "@/components/FitCheckCTA";
 
 type Day = {
@@ -20,7 +19,7 @@ const DAYS: Day[] = [
   { num: "03", title: "robots", owner: "aditya", ownerRole: "ai + tech", description: "robots.txt audit and rewrite. llms.txt authored and shipped. AI sitemap generated and submitted. IndexNow ping if applicable.", ships: ["robots.txt rewrite", "llms.txt authored", "AI sitemap + IndexNow"], deliverable: "PR #2 - crawl surface files", accent: false },
   { num: "04", title: "schema", owner: "aakif + aditya", ownerRole: "seo + tech", description: "Schema.org coverage across all primary routes. Article, FAQ, Organization, BreadcrumbList, SoftwareApplication where applicable. Validated against Google Rich Results and schema.org validator.", ships: ["Article schema on all blog/docs routes", "FAQ schema on product pages", "Org + BreadcrumbList sitewide"], deliverable: "PR #3 - schema coverage", accent: false },
   { num: "05", title: "copy", owner: "aakif", ownerRole: "seo + content", description: "Answer-first rewrites on your top 3 pages. The 40-word definitional test applied to every hero. Above-fold density scored and fixed. Title clarity pass - concept-to-product pattern.", ships: ["answer-first hero rewrites (×3)", "above-fold density fix", "title clarity pass"], deliverable: "copy doc + PR #4 - content patches", accent: false },
-  { num: "06", title: "deploy", owner: "aakif + aditya", ownerRole: "both operators", description: "Final QA pass across all 4 engines. All PRs merged. Day 7: we run the final 18-signal scan. If the delta clears +15, we hand off. If it doesn't, we keep building - on us - until it does.", ships: ["all PRs merged", "day 0 vs day 7 delta", "+15 verified before handoff"], deliverable: "engagement doc + handoff", accent: true },
+  { num: "06", title: "deploy + scan", owner: "aakif + aditya", ownerRole: "both operators", description: "Final QA pass across all 4 engines. All PRs merged. Day 7: we run the final 18-signal re-scan on the same URL, same rubric. You see the before/after delta per engine and get the handoff report.", ships: ["all PRs merged", "day 0 vs day 7 delta per engine", "handoff report"], deliverable: "engagement doc + handoff", accent: true },
 ];
 
 const INTAKE_ITEMS = [
@@ -182,19 +181,16 @@ export default function ProcessPage() {
                 <span className="text-pink">mechanics</span>.
               </h2>
               <p className="mt-6 text-sm leading-snug max-w-[400px]">
-                On day 7, Aakif runs the same 18-signal scan on the same URL. Same rubric, same weights, same engine coverage. If the delta clears +15, we hand off. If it doesn&apos;t, we keep building - extra days are on us.
+                On day 7, Aakif runs the same 18-signal scan on the same URL. Same rubric, same weights, same engine coverage. You see the before/after delta per engine and get the handoff report.
               </p>
               <div className="mt-8 space-y-3">
-                {["same 18-signal rubric, same weights", "same four engines (ChatGPT · Perplexity · Gemini · Claude)", "same URL - no switching to a 'better' page", "if delta < +15 → we extend the build, free", "engagement ends at handoff, not on a calendar"].map((l) => (
+                {["same 18-signal rubric, same weights", "same four engines (ChatGPT · Perplexity · Gemini · Claude)", "same URL - no switching to a 'better' page", "before/after delta reported per engine", "engagement ends at handoff"].map((l) => (
                   <div key={l} className="flex items-baseline gap-2 text-sm">
                     <span className="text-pink font-mono text-[9px] font-bold leading-none">▸</span>
                     <span>{l}</span>
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="col-span-12 md:col-span-7">
-              <GuaranteeBlock variant="stacked" />
             </div>
           </div>
         </div>

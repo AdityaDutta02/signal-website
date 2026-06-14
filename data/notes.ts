@@ -113,26 +113,26 @@ export const notes: Note[] = [
     related: ["07", "13", "14"],
   },
   {
-    slug: "the-15-point-ship-floor",
-    title: "the +15 ship floor.",
+    slug: "the-day-7-rescan",
+    title: "the day-7 re-scan.",
     num: "03",
     date: "oct 18 '25",
     readTime: "5 min",
     tag: "field note",
     excerpt:
-      "Why we don't call it shipped until the score moves +15. The day-7 scan is the gate, not a courtesy follow-up.",
+      "Why we re-run the same 18-signal scan on day 7. Same rubric, same URL, before and after — measured, not estimated.",
     body: [
       {
         paragraphs: [
           "Every Signal engagement is six days of build. On day 7 we run the same 18-signal scan we ran on day 0. Same engines, same prompts, same rubric, same crawler version. The only thing that changed is the site.",
-          "If the delta clears +15, we hand off. If it doesn't, we keep working - day 8, 9, 10 - until it does. Extra days are on us, not on your invoice.",
+          "You get the before/after numbers per engine. Whatever moved, moved. Whatever didn't, we tell you why and what couldn't be fixed inside the six days.",
         ],
       },
       {
-        heading: "why a floor instead of a re-score",
+        heading: "why a re-scan instead of a 30-day re-score",
         paragraphs: [
-          "Agencies that promise to 're-score in 30 days' are betting on indexing latency. We don't. The fixes either move the rubric on the day of the scan or they don't - the rubric measures what's in the file, not what's in the index.",
-          "The ship floor turns that into the agency's problem, not the client's. There is no day-30 obligation, no retainer, no check-in calendar. Engagement ends at handoff.",
+          "Agencies that promise to 're-score in 30 days' are betting on indexing latency. We don't. The rubric measures what's in the file, not what's in the index — the fixes either move the rubric on the day of the scan or they don't.",
+          "Day 7 is the engagement boundary. No retainer, no check-in calendar, no day-30 obligation. The re-scan happens once, against the same yardstick.",
         ],
       },
     ],

@@ -8,8 +8,9 @@ const BODY = `# Signal - signalled.studio
 
 > Signal makes B2B SaaS sites citeable by AI engines.
 > 6-day build, $2,490 flat, day-7 final scan + handoff.
-> Gated by Signal's 18-signal rubric (Block A entity ×1.5, B on-page, C content, D off-site ×1.4).
-> +15 ship floor before handoff. Validated by HubSpot's AEO Grader.
+> Run by 2 operators (Aakif: SEO + content; Aditya: AI + tech).
+> Scored on Signal's 18-signal rubric (Block A entity ×1.5, B on-page, C content, D off-site ×1.4).
+> Day-7 re-scan reports before/after delta per engine. No forward guarantee on score lift.
 
 ## Pages
 - [Home](https://signalled.studio/) - what Signal does, how it works, pricing

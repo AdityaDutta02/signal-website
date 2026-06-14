@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Check, Shield } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { SlotBadge } from "@/components/SlotBadge";
-import { GuaranteeBlock } from "@/components/GuaranteeBlock";
 
 const WHAT_YOU_GET = [
   "18-signal AEO audit on your URL",
@@ -103,12 +102,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="border-b-2 border-line bg-bg">
-        <div className="max-w-8xl mx-auto px-6 md:px-10 py-10 md:py-14">
-          <GuaranteeBlock variant="wide" />
-        </div>
-      </section>
-
       <section className="border-b-2 border-line bg-fg text-bg">
         <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-24">
           <div className="grid grid-cols-12 gap-8 items-start">
@@ -136,10 +129,9 @@ export default function PricingPage() {
                   book a fit check first →
                 </Link>
               </div>
-              <div className="mt-8 flex items-center gap-3">
-                <Shield className="w-4 h-4 text-pink" strokeWidth={2} />
+              <div className="mt-8">
                 <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/60">
-                  14-day refund window · +15 guarantee · assets yours
+                  14-day pre-build refund window · assets yours after handoff
                 </span>
               </div>
             </div>

@@ -925,13 +925,12 @@ function Outcome() {
               {data.overallScore} <span className="text-fg-muted">→</span> {data.projectedScore}
             </div>
             <p className="mt-6 text-base md:text-lg leading-snug max-w-[420px]">
-              matches our pilot average across 11 builds. day 7 final scan by hubspot aeo grader confirms the
-              movement before we call it shipped. if it doesn&apos;t clear +15, we keep building on our dime.
+              projected delta from the 18-signal scan. final number is confirmed by the day-7 re-scan after the build. past pilots have averaged similar lifts; yours depends on stack and starting point.
             </p>
             <div className="mt-6 inline-flex items-baseline gap-3 border-2 border-fg bg-bg px-4 py-2 font-mono text-[10px] font-bold tracking-widest uppercase">
-              <span className="text-pink">+15 ship floor</span>
+              <span className="text-pink">day 7 re-scan</span>
               <span className="text-fg-muted">·</span>
-              <span>verified before handoff</span>
+              <span>same rubric, same URL</span>
             </div>
           </div>
 

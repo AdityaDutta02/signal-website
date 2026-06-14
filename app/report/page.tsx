@@ -27,7 +27,7 @@ const chapters: { num: string; title: string }[] = [
   { num: "20", title: "canonical tags and url variants" },
   { num: "21", title: "cross-engine scoring rubric" },
   { num: "22", title: "the 6-day engagement model" },
-  { num: "23", title: "the +15 ship floor explained" },
+  { num: "23", title: "day-7 re-scan mechanics" },
   { num: "24", title: "what to do on monday morning" },
 ];
 

@@ -7,7 +7,7 @@ const items = [
   "gemini",
   "claude",
   "copilot",
-  "+15 ship floor",
+  "day-7 final scan",
   "built for b2b saas",
 ];
 

@@ -35,9 +35,9 @@ export function Pricing() {
               </div>
               <div className="p-4 md:p-5 border-r-2 border-bg/40">
                 <div className="font-display text-3xl md:text-4xl leading-none tracking-tighter">
-                  +15<span className="text-pink">.</span>
+                  18<span className="text-pink">.</span>
                 </div>
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/70 mt-3">ship floor</div>
+                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/70 mt-3">signals</div>
               </div>
               <div className="p-4 md:p-5">
                 <div className="font-display text-3xl md:text-4xl leading-none tracking-tighter">

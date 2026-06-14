@@ -67,7 +67,7 @@ export function MethodologyView() {
           <div className="mt-12 grid grid-cols-12 gap-6 md:gap-10 anim-fade-in items-end" style={{ animationDelay: "340ms" }}>
             <div className="col-span-12 md:col-span-7">
               <p className="text-base md:text-lg leading-snug max-w-[600px]">
-                Eighteen signals across four blocks - entity, on-page, content, off-site. Block A and D carry multipliers (1.5× and 1.4×) because they move citation share the hardest. Raw max 115, normalised to /100. +15 ship floor.
+                Eighteen signals across four blocks - entity, on-page, content, off-site. Block A and D carry multipliers (1.5× and 1.4×) because they move citation share the hardest. Raw max 115, normalised to /100.
               </p>
             </div>
             <div className="col-span-12 md:col-span-5 grid grid-cols-3 border-2 border-line">
@@ -80,8 +80,8 @@ export function MethodologyView() {
                 <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">blocks</div>
               </div>
               <div className="p-4 md:p-5">
-                <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter"><span className="text-pink">+</span>15</div>
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">ship floor</div>
+                <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">115</div>
+                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">raw max</div>
               </div>
             </div>
           </div>
@@ -243,7 +243,7 @@ export function MethodologyView() {
           <div className="mt-8 border-2 border-line p-5 md:p-6 flex flex-wrap items-center justify-between gap-4">
             <p className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted leading-relaxed max-w-[520px]">
               every audit is scored on this rubric. the math:
-              <span className="text-fg"> sum(score × block multiplier) / 115 × 100</span>, rounded to integer. +15 ship floor before handoff.
+              <span className="text-fg"> sum(score × block multiplier) / 115 × 100</span>, rounded to integer. Same rubric, same URL, before and after.
             </p>
             <a
               href="#rubric-pdf"
