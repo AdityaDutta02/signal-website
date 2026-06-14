@@ -311,8 +311,6 @@ export default function WorkDetailPage() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted border-b-2 border-line pb-8 mb-8">
             <span>delivered {c.shippedAt}</span>
             <span className="text-fg-muted/40">·</span>
-            <span>+15 ship floor cleared</span>
-            <span className="text-fg-muted/40">·</span>
             <span>18 signals tested</span>
             <span className="text-fg-muted/40">·</span>
             <span>3 engines</span>
@@ -332,18 +330,13 @@ export default function WorkDetailPage() {
               </Link>
             </div>
             <div className="col-span-12 md:col-span-6 flex md:justify-end">
-              <a
-                href="#audit-input"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("audit-input")?.focus();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
+              <Link
+                href="/#hero-audit"
                 className="group flex items-center justify-between gap-4 bg-pink text-bg px-6 py-5 hover:bg-fg transition-colors duration-200 border-2 border-pink hover:border-fg"
               >
                 <span className="font-display text-2xl md:text-3xl tracking-tight">scan my site</span>
                 <ArrowRight className="w-6 h-6 transition-transform duration-200 group-hover:translate-x-2" strokeWidth={2.5} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

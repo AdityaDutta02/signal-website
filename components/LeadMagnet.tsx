@@ -19,7 +19,7 @@ export function LeadMagnet() {
         <div className="grid grid-cols-12 gap-6 md:gap-12 items-center">
           <div className="col-span-12 md:col-span-5 flex justify-center md:justify-start">
             <div className="relative">
-              <div className="rotate-[-3deg] hover:rotate-[-1deg] transition-transform duration-500 ease-out">
+              <div className="gpu-text rotate-[-3deg] hover:rotate-[-1deg] transition-transform duration-300 ease-out">
                 <div className="w-[260px] md:w-[340px] aspect-[3/4] bg-bg border-2 border-line p-5 md:p-6 flex flex-col shadow-[8px_8px_0_0_#0A0A0A]">
                   <div className="flex items-center justify-between font-mono text-[10px] font-bold tracking-widest uppercase">
                     <span>the aeo report</span>
@@ -34,7 +34,7 @@ export function LeadMagnet() {
                   <div className="mt-auto pt-6 border-t-2 border-line">
                     <div className="font-mono text-[9px] tracking-widest uppercase text-fg-muted leading-relaxed">
                       412 sites scanned<br />
-                      18 signals · 5 categories<br />
+                      18 signals · 4 blocks<br />
                       written nov &apos;25
                     </div>
                     <div className="mt-3 font-display text-2xl">signal<span className="text-pink">*</span></div>

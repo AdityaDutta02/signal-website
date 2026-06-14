@@ -74,7 +74,7 @@ export function Footer() {
             { label: "block B · on-page · 05", href: "/rubric" },
             { label: "block C · content · 04", href: "/rubric" },
             { label: "block D · off-site · 04", href: "/rubric" },
-            { label: "+15 ship floor", href: "/methodology" },
+            { label: "scoring formula", href: "/methodology" },
           ]} />
 
           <FooterCol title="contact" links={[

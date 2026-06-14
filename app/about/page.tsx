@@ -61,8 +61,8 @@ const OPERATORS: Operator[] = [
     ],
     shipped: [
       { client: "vellum", what: "ssr migration · day 3", metric: "edge render, gptbot allow" },
-      { client: "linear-adjacent fintech", what: "schema patch · 4 days", metric: "112 routes covered" },
-      { client: "two stealth co.", what: "llms.txt + ai sitemap", metric: "perplexity citation +6x" },
+      { client: "stack foundry", what: "schema patch · 4 days", metric: "112 routes covered" },
+      { client: "numerade", what: "llms.txt + ai sitemap", metric: "perplexity citation lift" },
     ],
     writing: [
       { title: "running the eval harness against 4 engines", where: "/notes" },
@@ -87,13 +87,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-12 gap-8 items-end">
             <div className="col-span-12 md:col-span-8">
               <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted mb-6">/ operators</div>
-              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.88] tracking-tighter">
-                two people.<br />
-                <span className="text-pink">same two</span> on every<br />
-                engagement.
+              <h1 className="font-display leading-[0.86] tracking-tighter" style={{ fontSize: "clamp(64px, 10vw, 152px)" }}>
+                two people<span className="text-pink">.</span><br />
+                every engagement<span className="text-pink">.</span>
               </h1>
-              <p className="mt-8 text-base md:text-lg leading-snug max-w-[560px]">
-                Signal is run by Aakif and Aditya. No PMs, no account managers, no agency tier you graduate down into after the kickoff. The two of us scan, ship, and verify every site. Below: who does what, what we&apos;ve shipped, and how to reach us before you buy.
+              <p className="mt-8 text-lg md:text-xl leading-snug max-w-[520px]">
+                Aakif and Aditya. No PMs. No account managers. The two of us scan, ship, verify.
               </p>
             </div>
             <div className="col-span-12 md:col-span-4 md:justify-self-end flex flex-col gap-4 items-start md:items-end">
@@ -108,8 +107,8 @@ export default function AboutPage() {
             {[
               { n: "02", l: "operators" },
               { n: "00", l: "PMs · AMs" },
-              { n: "27", l: "sites shipped" },
-              { n: "+33", l: "avg. delivery delta" },
+              { n: "03", l: "pilots shipped" },
+              { n: "412", l: "sites audited" },
             ].map((s, i) => (
               <div key={s.l} className={`p-5 md:p-6 ${i < 3 ? "border-r-2 border-line" : ""} ${i < 2 ? "border-b-2 md:border-b-0 border-line" : ""}`}>
                 <div className="font-display text-4xl md:text-5xl leading-none tracking-tighter">{s.n}</div>
@@ -124,36 +123,6 @@ export default function AboutPage() {
         {OPERATORS.map((op, i) => (
           <OperatorBlock key={op.name} op={op} index={i + 1} reverse={i % 2 === 1} />
         ))}
-      </section>
-
-      <section className="border-b-2 border-line bg-fg text-bg">
-        <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-20">
-          <div className="grid grid-cols-12 gap-8">
-            <div className="col-span-12 md:col-span-5">
-              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg-muted mb-6">/ the promise</div>
-              <h2 className="font-display text-4xl md:text-6xl leading-[0.95] tracking-tighter">
-                same two people.<br />
-                <span className="text-pink">every</span> engagement.
-              </h2>
-            </div>
-            <div className="col-span-12 md:col-span-7 space-y-6">
-              {[
-                { n: "01", t: "no agency tier", b: "You will not be handed off to a junior. Aakif and Aditya run every audit, every fix, every verification. If we can't both fit your engagement, we don't take it." },
-                { n: "02", t: "no kickoff workshop", b: "We don't run discovery decks. You give us the URL and the stack, we send you the audit, and the build starts on day one. Async over Slack or shared doc." },
-                { n: "03", t: "named scope, fixed price", b: "Every engagement is scoped to the 6-day rebuild against your audit. Pricing is $2,490 flat. No retainer, no rolling fees, no expansion conversation." },
-                { n: "04", t: "+15 ship floor, on the same rubric", b: "Day 7, we run the same 18-signal scan on the same URL. If the score hasn't moved +15, we don't call it shipped - we keep building on our dime until it does. The rubric is published." },
-              ].map((p) => (
-                <div key={p.n} className="flex gap-5 border-b border-bg-muted/20 pb-6 last:border-b-0">
-                  <div className="font-display text-3xl text-pink leading-none tracking-tighter w-12 flex-shrink-0">{p.n}</div>
-                  <div>
-                    <div className="font-display text-xl leading-tight tracking-tighter">{p.t}</div>
-                    <p className="mt-2 text-sm leading-snug text-bg-muted">{p.b}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
       <section className="bg-bg">
@@ -173,7 +142,7 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/"
+                href="/#hero-audit"
                 className="group inline-flex items-center gap-2 bg-fg text-bg px-5 py-3 hover:bg-pink transition-colors font-mono text-[11px] font-bold tracking-widest uppercase"
               >
                 scan my site

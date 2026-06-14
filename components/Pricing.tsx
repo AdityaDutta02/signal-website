@@ -11,7 +11,7 @@ export function Pricing() {
     <section ref={ref} className="border-b-2 border-line bg-fg text-bg overflow-hidden">
       <div className="max-w-8xl mx-auto px-6 md:px-10 py-20 md:py-28">
         <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60 mb-8 md:mb-12">
-          / 04 · pricing · one flat fee
+          / 05 · pricing · one flat fee
         </div>
 
         <div className="grid grid-cols-12 gap-6 md:gap-10 items-end">
@@ -35,9 +35,9 @@ export function Pricing() {
               </div>
               <div className="p-4 md:p-5 border-r-2 border-bg/40">
                 <div className="font-display text-3xl md:text-4xl leading-none tracking-tighter">
-                  +15<span className="text-pink">.</span>
+                  18<span className="text-pink">.</span>
                 </div>
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/70 mt-3">ship floor</div>
+                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/70 mt-3">signals</div>
               </div>
               <div className="p-4 md:p-5">
                 <div className="font-display text-3xl md:text-4xl leading-none tracking-tighter">
@@ -69,9 +69,9 @@ export function Pricing() {
               ))}
             </ul>
           </div>
-          <div className="col-span-12 md:col-span-5 pt-8 md:pl-10">
-            <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/60 mb-5">- what you don&apos;t</div>
-            <ul className="divide-y divide-bg/15 border-y-2 border-bg/30">
+          <div className="col-span-12 md:col-span-5 md:ml-10 bg-bg text-fg p-6 md:p-8 border-2 border-bg">
+            <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mb-5">- what you don&apos;t</div>
+            <ul className="divide-y divide-fg/15 border-y-2 border-fg/30">
               {[
                 "no retainer",
                 "no monthly content",
@@ -80,8 +80,8 @@ export function Pricing() {
                 "no junior layer",
               ].map((item) => (
                 <li key={item} className="flex items-baseline gap-4 py-3.5">
-                  <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/40 w-6 flex-shrink-0">×</span>
-                  <span className="font-display text-lg md:text-xl tracking-tight text-bg/75 leading-tight line-through decoration-bg/30 decoration-[1.5px]">{item}</span>
+                  <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg/50 w-6 flex-shrink-0">×</span>
+                  <span className="font-display text-lg md:text-xl tracking-tight text-fg leading-tight line-through decoration-fg/60 decoration-[1.5px]">{item}</span>
                 </li>
               ))}
             </ul>

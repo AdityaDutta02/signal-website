@@ -27,7 +27,7 @@ const chapters: { num: string; title: string }[] = [
   { num: "20", title: "canonical tags and url variants" },
   { num: "21", title: "cross-engine scoring rubric" },
   { num: "22", title: "the 6-day engagement model" },
-  { num: "23", title: "the +15 ship floor explained" },
+  { num: "23", title: "day-7 re-scan mechanics" },
   { num: "24", title: "what to do on monday morning" },
 ];
 
@@ -113,7 +113,7 @@ function PDFCover() {
           <div className="mt-auto pt-6 border-t-2 border-bg/20">
             <div className="font-mono text-[9px] tracking-widest uppercase text-bg/50 leading-relaxed">
               412 sites scanned<br />
-              18 signals · 5 categories<br />
+              18 signals · 4 blocks<br />
               written nov &apos;25
             </div>
             <div className="mt-3 flex items-center justify-between">
@@ -327,7 +327,7 @@ export default function ReportPage() {
               24 chapters<span className="text-pink">.</span>
             </h2>
             <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted">
-              18 signals · 5 clusters · 412 audits
+              18 signals · 4 blocks · 412 audits
             </div>
           </div>
 
@@ -353,116 +353,6 @@ export default function ReportPage() {
                   </div>
                 );
               })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b-2 border-line bg-pink-wash">
-        <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-24">
-          <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted mb-6">/ sample page preview</div>
-          <div className="grid grid-cols-12 gap-6 md:gap-16 items-center">
-            <div className="col-span-12 md:col-span-5">
-              <h2 className="font-display text-4xl md:text-5xl leading-[0.92] tracking-tight">
-                24 pages of<br />audit data<span className="text-pink">.</span>
-              </h2>
-              <p className="mt-6 text-base md:text-lg leading-snug max-w-[420px]">
-                Every chapter follows the same pattern - signal definition, why it matters to answer engines, the fix, and a real example from the audit data.
-              </p>
-              <div className="mt-8 grid grid-cols-3 border-2 border-line">
-                <div className="p-4 border-r-2 border-line">
-                  <div className="font-display text-3xl leading-none tracking-tighter">24</div>
-                  <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-2">pages</div>
-                </div>
-                <div className="p-4 border-r-2 border-line">
-                  <div className="font-display text-3xl leading-none tracking-tighter">412</div>
-                  <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-2">audits</div>
-                </div>
-                <div className="p-4">
-                  <div className="font-display text-3xl leading-none tracking-tighter">v<span className="text-pink">1.2</span></div>
-                  <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-2">version</div>
-                </div>
-              </div>
-            </div>
-            <div className="col-span-12 md:col-span-7">
-              <SampleSpread />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b-2 border-line bg-bg relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
-        <div className="relative max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-24">
-          <div className="grid grid-cols-12 gap-8 md:gap-14 items-center">
-            <div className="col-span-12 md:col-span-5">
-              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted mb-6">/ per-prospect audit</div>
-              <h2 className="font-display text-4xl md:text-6xl leading-[0.9] tracking-tight">
-                every url gets a<br /><span className="text-pink">custom scorecard</span>.
-              </h2>
-              <p className="mt-6 text-base md:text-lg leading-snug max-w-[440px]">
-                The report is the foundation. Every URL you submit lands on its own scorecard - your score, the 18-signal breakdown for your site, top 3 fixes ranked by projected delta, and a sample of what we&apos;d ship in 6 days.
-              </p>
-              <div className="mt-8 grid grid-cols-3 border-2 border-line">
-                <div className="p-4 border-r-2 border-line">
-                  <div className="font-display text-3xl leading-none tracking-tighter">18</div>
-                  <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-2">signals scored</div>
-                </div>
-                <div className="p-4 border-r-2 border-line">
-                  <div className="font-display text-3xl leading-none tracking-tighter">04</div>
-                  <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-2">engines</div>
-                </div>
-                <div className="p-4">
-                  <div className="font-display text-3xl leading-none tracking-tighter">90<span className="text-fg-muted text-xl">s</span></div>
-                  <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-2">to generate</div>
-                </div>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/audit/demo"
-                  className="group inline-flex items-center gap-3 bg-fg text-bg px-6 py-4 hover:bg-pink transition-colors duration-200 font-mono text-[11px] font-bold tracking-widest uppercase"
-                >
-                  view sample scorecard
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
-                </Link>
-                <a
-                  href="#audit-input"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById("audit-input")?.focus();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="inline-flex items-center gap-2 border-2 border-line px-5 py-4 hover:border-pink hover:text-pink transition-colors font-mono text-[11px] font-bold tracking-widest uppercase"
-                >
-                  scan my site
-                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.5} />
-                </a>
-              </div>
-            </div>
-
-            <div className="col-span-12 md:col-span-7">
-              <AuditPagePreview />
-            </div>
-          </div>
-
-          <div className="mt-14 md:mt-20 border-t-2 border-line pt-8">
-            <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mb-5">/ what&apos;s on the scorecard</div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { n: "01", t: "your overall score · vs. b2b saas median" },
-                { n: "02", t: "per-engine score · chatgpt, perplexity, gemini, claude" },
-                { n: "03", t: "18-signal pass/fail breakdown with weights" },
-                { n: "04", t: "top 3 fixes ranked by projected delta" },
-                { n: "05", t: "one sample fix shown before/after as code" },
-                { n: "06", t: "6-day rebuild plan, day by day" },
-                { n: "07", t: "projected score after the rebuild" },
-                { n: "08", t: "persistent url + pdf in your inbox" },
-              ].map((c) => (
-                <div key={c.n} className="border-2 border-line p-4 bg-bg">
-                  <div className="font-display text-2xl text-pink tracking-tighter leading-none">{c.n}</div>
-                  <div className="mt-3 text-xs md:text-sm leading-snug">{c.t}</div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
@@ -499,18 +389,13 @@ export default function ReportPage() {
             </div>
             <div className="col-span-12 md:col-span-6 flex flex-col items-start md:items-end gap-4">
               <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/60">or scan your site first</div>
-              <a
-                href="#audit-input"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("audit-input")?.focus();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
+              <Link
+                href="/#hero-audit"
                 className="group flex items-center justify-between gap-4 bg-pink text-bg px-6 py-6 hover:bg-bg hover:text-fg transition-colors duration-200 border-2 border-pink hover:border-bg w-full md:max-w-[380px]"
               >
                 <span className="font-display text-3xl md:text-4xl tracking-tight">scan my site</span>
                 <ArrowRight className="w-8 h-8 transition-transform duration-200 group-hover:translate-x-2" strokeWidth={2.5} />
-              </a>
+              </Link>
               <div className="font-mono text-[10px] tracking-widest uppercase text-bg/50">
                 free · 90 seconds · pdf emailed
               </div>

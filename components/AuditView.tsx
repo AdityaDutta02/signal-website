@@ -12,7 +12,7 @@ type AuditDataShape = typeof auditData;
 const AuditCtx = createContext<AuditDataShape>(auditData);
 const useAuditData = (): AuditDataShape => useContext(AuditCtx);
 
-const PINK_TOKENS = ["chatgpt", "perplexity", "claude", "gemini", "6 days", "day 7", "+15", "+33"];
+const PINK_TOKENS = ["chatgpt", "perplexity", "claude", "gemini", "6 days", "day 7"];
 
 function renderOneLiner(line: string): React.ReactNode {
   if (!line) return null;
@@ -159,7 +159,7 @@ function ScanningState({ domain, step }: { domain: string; step: number }) {
       <div className="max-w-3xl mx-auto px-6 md:px-10 py-16 md:py-24">
         <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-pink flex items-center gap-2">
           <span className="w-2 h-2 bg-pink anim-blink" />
-          scanning · 18 signals · 5 categories
+          scanning · 18 signals · 4 blocks
         </div>
 
         <h1 className="mt-8 font-display text-5xl md:text-7xl leading-[0.88] tracking-tight">
@@ -925,13 +925,12 @@ function Outcome() {
               {data.overallScore} <span className="text-fg-muted">→</span> {data.projectedScore}
             </div>
             <p className="mt-6 text-base md:text-lg leading-snug max-w-[420px]">
-              matches our pilot average across 11 builds. day 7 final scan by hubspot aeo grader confirms the
-              movement before we call it shipped. if it doesn&apos;t clear +15, we keep building on our dime.
+              projected delta from the 18-signal scan. final number is confirmed by the day-7 re-scan after the build. past pilots have averaged similar lifts; yours depends on stack and starting point.
             </p>
             <div className="mt-6 inline-flex items-baseline gap-3 border-2 border-fg bg-bg px-4 py-2 font-mono text-[10px] font-bold tracking-widest uppercase">
-              <span className="text-pink">+15 ship floor</span>
+              <span className="text-pink">day 7 re-scan</span>
               <span className="text-fg-muted">·</span>
-              <span>verified before handoff</span>
+              <span>same rubric, same URL</span>
             </div>
           </div>
 

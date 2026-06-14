@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { signals, blocks, type Block, type Signal } from "@/data/signals";
-import { SignalsGraph } from "@/components/SignalsGraph";
 import { ArrowRight, ArrowUpRight, ChevronDown, ChevronUp, Download } from "lucide-react";
 
 type Filter = Block | "all" | "fix";
@@ -21,14 +21,10 @@ export function MethodologyView() {
   const [selected, setSelected] = useState<Signal | null>(signals.find(s => s.fix) ?? null);
   const [filter, setFilter] = useState<Filter>("all");
   const [rubricFilter, setRubricFilter] = useState<RubricFilter>("all");
-  const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set());
+  const [expandedRow, setExpandedRow] = useState<string | null>(null);
 
   const toggleRow = (id: string) => {
-    setExpandedRows(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) { next.delete(id); } else { next.add(id); }
-      return next;
-    });
+    setExpandedRow(prev => (prev === id ? null : id));
   };
 
   const rubricVisible = rubricFilter === "all"
@@ -70,7 +66,7 @@ export function MethodologyView() {
           <div className="mt-12 grid grid-cols-12 gap-6 md:gap-10 anim-fade-in items-end" style={{ animationDelay: "340ms" }}>
             <div className="col-span-12 md:col-span-7">
               <p className="text-base md:text-lg leading-snug max-w-[600px]">
-                Eighteen signals across four blocks - entity, on-page, content, off-site. Block A and D carry multipliers (1.5× and 1.4×) because they move citation share the hardest. Raw max 115, normalised to /100. +15 ship floor.
+                Eighteen signals across four blocks - entity, on-page, content, off-site. Block A and D carry multipliers (1.5× and 1.4×) because they move citation share the hardest. Raw max 115, normalised to /100.
               </p>
             </div>
             <div className="col-span-12 md:col-span-5 grid grid-cols-3 border-2 border-line">
@@ -83,8 +79,8 @@ export function MethodologyView() {
                 <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">blocks</div>
               </div>
               <div className="p-4 md:p-5">
-                <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter"><span className="text-pink">+</span>15</div>
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">ship floor</div>
+                <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">115</div>
+                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">raw max</div>
               </div>
             </div>
           </div>
@@ -118,20 +114,6 @@ export function MethodologyView() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      <section className="border-b-2 border-line bg-bg">
-        <div className="max-w-8xl mx-auto grid grid-cols-12">
-          <div className="col-span-12 md:col-span-8 border-b-2 md:border-b-0 md:border-r-2 border-line relative">
-            <div className="h-[440px] md:h-[720px] relative bg-bg">
-              <SignalsGraph mode="full" onSelect={(s) => setSelected(s)} />
-              <div className="absolute top-4 left-4 font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted pointer-events-none">
-                / signal map · click any node
-              </div>
-            </div>
-          </div>
-          <DetailPanel signal={selected} />
         </div>
       </section>
 
@@ -236,7 +218,7 @@ export function MethodologyView() {
               <RubricRow
                 key={s.id}
                 signal={s}
-                expanded={expandedRows.has(s.id)}
+                expanded={expandedRow === s.id}
                 onToggle={() => toggleRow(s.id)}
                 divider={i < rubricVisible.length - 1}
               />
@@ -246,7 +228,7 @@ export function MethodologyView() {
           <div className="mt-8 border-2 border-line p-5 md:p-6 flex flex-wrap items-center justify-between gap-4">
             <p className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted leading-relaxed max-w-[520px]">
               every audit is scored on this rubric. the math:
-              <span className="text-fg"> sum(score × block multiplier) / 115 × 100</span>, rounded to integer. +15 ship floor before handoff.
+              <span className="text-fg"> sum(score × block multiplier) / 115 × 100</span>, rounded to integer. Same rubric, same URL, before and after.
             </p>
             <a
               href="#rubric-pdf"
@@ -272,18 +254,13 @@ export function MethodologyView() {
               </p>
             </div>
             <div className="col-span-12 md:col-span-5">
-              <a
-                href="#audit-input"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("audit-input")?.focus();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
+              <Link
+                href="/#hero-audit"
                 className="group flex items-center justify-between gap-4 bg-pink text-bg px-6 py-6 hover:bg-bg hover:text-fg transition-colors duration-200 border-2 border-pink hover:border-bg"
               >
                 <span className="font-display text-3xl md:text-4xl tracking-tight">scan my site</span>
                 <ArrowRight className="w-8 h-8 transition-transform duration-200 group-hover:translate-x-2" strokeWidth={2.5} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -366,60 +343,6 @@ function RubricRow({
           </div>
         </div>
       )}
-    </div>
-  );
-}
-
-function DetailPanel({ signal }: { signal: Signal | null }) {
-  if (!signal) {
-    return (
-      <div className="col-span-12 md:col-span-4 p-8 md:p-10 bg-bg flex items-center justify-center min-h-[300px] md:min-h-[720px]">
-        <div className="text-center font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted leading-relaxed">
-          click any node<br />
-          to see the<br />
-          full signal
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div key={signal.id} className="col-span-12 md:col-span-4 p-8 md:p-10 bg-pink-wash flex flex-col anim-fade-in">
-      <div className="flex flex-wrap items-baseline gap-2">
-        <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-pink bg-bg px-2 py-1 border-2 border-pink">
-          block {signal.block}
-        </span>
-        {signal.fix && (
-          <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg bg-pink px-2 py-1">
-            top 3 fix
-          </span>
-        )}
-        <span className="font-mono text-[10px] tracking-widest uppercase text-fg-muted ml-auto">
-          signal {String(signal.num).padStart(2, "0")} / 18
-        </span>
-      </div>
-
-      <div className="mt-6 font-display leading-[0.78] tracking-tighter text-pink" style={{ fontSize: "clamp(110px, 14vw, 180px)" }}>
-        {String(signal.num).padStart(2, "0")}
-      </div>
-
-      <h3 className="mt-2 font-display text-3xl md:text-4xl tracking-tight leading-[0.95]">
-        {signal.title}<span className="text-pink">.</span>
-      </h3>
-
-      <div className="mt-8 border-t-2 border-line pt-5">
-        <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mb-2">
-          - the problem
-        </div>
-        <p className="text-sm md:text-base leading-snug">{signal.problem}</p>
-      </div>
-
-      <div className="mt-6 border-t-2 border-line pt-5">
-        <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-pink mb-2">
-          + the fix
-        </div>
-        <p className="text-sm md:text-base leading-snug">{signal.solution}</p>
-      </div>
     </div>
   );
 }

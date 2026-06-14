@@ -80,7 +80,7 @@ export default async function OG() {
           }}
         >
           <span>signalled.studio</span>
-          <span style={{ color: "#FF1F6A" }}>+15 ship floor</span>
+          <span style={{ color: "#FF1F6A" }}>day-7 re-scan</span>
         </div>
       </div>
     ),

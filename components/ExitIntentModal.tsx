@@ -47,9 +47,11 @@ export function ExitIntentModal() {
     return () => window.removeEventListener(OPEN_EVENT, onOpen);
   }, [handleOpen]);
 
-  // Exit-intent trigger: fire once per session when the mouse leaves the top edge.
-  // sessionStorage prevents re-fire on SPA navigation; the programmatic open path
-  // (Hero CTA) is unaffected and always works.
+  // Exit-intent trigger: only fires when the visitor has BOTH spent ≥30s on the
+  // page AND scrolled past 40% of document height. Prevents the popup hitting
+  // users who reach for the tab bar / URL audit form in the first few seconds.
+  // Suppressed permanently for the session once shown OR once any lead-capture
+  // form (Hero CTA, footer LeadMagnet) has been interacted with.
   useEffect(() => {
     if (typeof window === "undefined") return;
     let alreadyShown = false;
@@ -60,15 +62,38 @@ export function ExitIntentModal() {
     }
     if (alreadyShown) return;
 
-    let armed = false;
+    let timeReached = false;
+    let scrollReached = false;
+    let suppressed = false;
+
     const armTimer = window.setTimeout(() => {
-      armed = true;
-    }, 5000); // don't fire in the first 5s — gives Hero time to render
+      timeReached = true;
+    }, 30_000);
+
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      if (max <= 0) return;
+      const pct = window.scrollY / max;
+      if (pct >= 0.4) {
+        scrollReached = true;
+        window.removeEventListener("scroll", onScroll);
+      }
+    };
+
+    // Any interaction with an email/url input means the user is already engaged —
+    // a popup at that point would be pure interruption.
+    const onFormFocus = (e: FocusEvent) => {
+      const t = e.target as HTMLElement | null;
+      if (!t) return;
+      if (t.tagName === "INPUT" || t.tagName === "TEXTAREA") {
+        suppressed = true;
+      }
+    };
 
     const onLeave = (e: MouseEvent) => {
-      // Only fire when cursor exits the *top* of the viewport (toward tab bar / address bar)
-      // and the relatedTarget is null (= left the document, not just hovered a child)
-      if (!armed) return;
+      if (suppressed) return;
+      if (!(timeReached && scrollReached)) return;
       if (e.clientY > 8) return;
       if (e.relatedTarget !== null) return;
       try {
@@ -77,9 +102,13 @@ export function ExitIntentModal() {
       handleOpen();
     };
 
+    window.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener("focusin", onFormFocus);
     document.addEventListener("mouseout", onLeave);
     return () => {
       window.clearTimeout(armTimer);
+      window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("focusin", onFormFocus);
       document.removeEventListener("mouseout", onLeave);
     };
   }, [handleOpen]);
@@ -169,7 +198,7 @@ export function ExitIntentModal() {
             </h3>
             <p className="mt-4 text-sm leading-snug max-w-[420px]">
               The 18 signals we test, the engines we test them on, and the fix patterns
-              that moved scores +33 average across three pilots. One email. One PDF. Nothing else.
+              we shipped on the first three pilots. One email. One PDF. Nothing else.
             </p>
 
             <form

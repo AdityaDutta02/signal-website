@@ -5,7 +5,7 @@ import { faqPageGraph, rubricHowToGraph, jsonLdScript } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "methodology · the 18-signal rubric",
   description:
-    "Signal's published 4-block, 18-signal AEO rubric. Block A entity (×1.5), B on-page, C content, D off-site (×1.4). Raw max 115, normalised /100, +15 ship floor.",
+    "Signal's published 4-block, 18-signal AEO rubric. Block A entity (×1.5), B on-page, C content, D off-site (×1.4). Raw max 115, normalised to /100.",
   alternates: { canonical: "https://signalled.studio/methodology" },
 };
 

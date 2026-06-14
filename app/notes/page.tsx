@@ -238,18 +238,13 @@ export default function NotesPage() {
               </p>
             </div>
             <div className="col-span-12 md:col-span-5">
-              <a
-                href="#audit-input"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("audit-input")?.focus();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
+              <Link
+                href="/#hero-audit"
                 className="group flex items-center justify-between gap-4 bg-pink text-bg px-6 py-6 hover:bg-bg hover:text-fg transition-colors duration-200 border-2 border-pink hover:border-bg"
               >
                 <span className="font-display text-3xl md:text-4xl tracking-tight">scan my site</span>
                 <ArrowRight className="w-8 h-8 transition-transform duration-200 group-hover:translate-x-2" strokeWidth={2.5} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

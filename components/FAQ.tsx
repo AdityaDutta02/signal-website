@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "What if the final scan doesn't move?",
-    a: "We re-build the failing signals at no extra cost during the delivery window. If we still can't move the needle on at least two of three engines, we refund 50%. We've not had to do that yet - three for three pilots cleared +30 average.",
+    a: "We show you the failing signals, the patches we shipped, and a candid read on what your stack couldn't carry. Past pilots have shown lift on at least two of three engines, but none of that's a forward guarantee — your stack, content, and competitive set drive the result.",
   },
   {
     q: "Is this just SEO with a new name?",
@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: "Who actually does the work?",
-    a: "Two people. The founder (ex-staff engineer, eight years across three B2B SaaS) writes the diff. A second engineer reviews. No agency tower, no junior layer, no offshored content team.",
+    a: "Two people. Aakif (SEO + content, 11 years) runs the audit, scoring, and content rewrites. Aditya (AI + tech, 9 years) writes the patches, runs the eval harness across the four engines, and ships the PR. Same two on every engagement.",
   },
 ];
 

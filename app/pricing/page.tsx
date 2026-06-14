@@ -1,12 +1,6 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Check, Shield } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { SlotBadge } from "@/components/SlotBadge";
-import { GuaranteeBlock } from "@/components/GuaranteeBlock";
-import { StackCompatStrip } from "@/components/StackCompatStrip";
-import { FitCheckCTA } from "@/components/FitCheckCTA";
 
 const WHAT_YOU_GET = [
   "18-signal AEO audit on your URL",
@@ -28,43 +22,6 @@ const WHAT_YOU_DONT = [
   "no lock-in after day 6",
 ];
 
-const COMPARE_ROWS = [
-  { label: "scope", signal: "18-signal audit + 6-day build, named deliverables", agency: "discovery → proposal → SOW → kickoff → sprint", diy: "you figure it out from blog posts" },
-  { label: "price", signal: "$2,490 flat · one invoice", agency: "$8k–$25k/mo retainer, 3-month minimum", diy: "your time · $0 cash" },
-  { label: "timeline", signal: "6 days to ship · day-7 final scan", agency: "6–12 weeks to first deliverable", diy: "ongoing, no deadline" },
-  { label: "who does the work", signal: "aakif + aditya · same two every engagement", agency: "account manager → junior team you never meet", diy: "you" },
-  { label: "guarantee", signal: "+15 ship floor · we keep building, free, until cleared", agency: "none · or vague 'best efforts' language", diy: "none" },
-  { label: "post-engagement", signal: "assets yours · no retainer · NDA avail.", agency: "retainer renewal conversation", diy: "you maintain it" },
-];
-
-const FAQ_ITEMS = [
-  { q: "do you do retainers?", a: "No. Signal is a fixed-scope, fixed-price engagement. $2,490 covers the audit, the 6-day build, the day 7 final scan, and the handoff. The engagement ends at handoff - no retainer, no rolling fee, no day-30 check-in obligation. If you want a second engagement months later, we scope it fresh." },
-  { q: "what exactly is in scope?", a: "The 18-signal AEO audit on your primary URL, answer-first rewrites on your top 3 pages, schema.org coverage (Article, FAQ, Org, BreadcrumbList), robots.txt + llms.txt + AI sitemap, and SSR/hydration/bot-allow fixes where applicable. Everything is named in the engagement doc before you pay." },
-  { q: "what's the refund window?", a: "14 days from payment, before the build starts. Once we've shipped the first PR, the engagement is underway and the refund window closes. The +15 guarantee covers you from that point forward." },
-  { q: "what are the payment terms?", a: "100% upfront via Stripe. No payment plan, no net-30. The flat price is the flat price - no surprises on the invoice." },
-  { q: "can i see the scoring rubric before i pay?", a: "Yes. The 18-signal rubric is published on /methodology. Every signal has a pass/fail criterion and a weight. The same rubric is used for your day-0 audit and your day-7 final scan." },
-];
-
-function FaqRow({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b-2 border-line last:border-b-0">
-      <button
-        onClick={() => setOpen((p) => !p)}
-        className="w-full flex items-baseline justify-between gap-4 px-5 py-4 text-left hover:bg-pink-wash/40 transition-colors"
-      >
-        <span className="font-display text-lg md:text-xl leading-tight tracking-tighter">{q}</span>
-        <span className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted flex-shrink-0">
-          {open ? "−" : "+"}
-        </span>
-      </button>
-      {open && (
-        <div className="px-5 pb-5 text-sm leading-snug text-fg-muted max-w-[680px]">{a}</div>
-      )}
-    </div>
-  );
-}
-
 export default function PricingPage() {
   return (
     <>
@@ -74,13 +31,13 @@ export default function PricingPage() {
           <div className="grid grid-cols-12 gap-8 items-end">
             <div className="col-span-12 md:col-span-8">
               <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted mb-6">/ pricing</div>
-              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.88] tracking-tighter">
+              <h1 className="font-display leading-[0.88] tracking-tighter" style={{ fontSize: "clamp(64px, 10vw, 152px)" }}>
                 one price.<br />
                 <span className="text-pink">six days.</span><br />
                 no retainer.
               </h1>
-              <p className="mt-8 text-base md:text-lg leading-snug max-w-[560px]">
-                $2,490 flat. No kickoff workshop, no discovery deck, no PM layer. Aakif and Aditya run the audit, ship the fixes, and don&apos;t hand off until the day 7 final scan clears +15. That&apos;s the whole engagement.
+              <p className="mt-8 text-lg md:text-xl leading-snug max-w-[520px]">
+                $2,490 flat. Aakif and Aditya run it end-to-end. Handoff only after +15 clears.
               </p>
             </div>
             <div className="col-span-12 md:col-span-4 md:justify-self-end flex flex-col gap-4 items-start md:items-end">
@@ -145,67 +102,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="border-b-2 border-line bg-bg">
-        <div className="max-w-8xl mx-auto px-6 md:px-10 py-10 md:py-14">
-          <GuaranteeBlock variant="wide" />
-        </div>
-      </section>
-
-      <section className="border-b-2 border-line bg-bg">
-        <div className="max-w-8xl mx-auto px-6 md:px-10 py-10 md:py-14">
-          <StackCompatStrip />
-        </div>
-      </section>
-
-      <section className="border-b-2 border-line bg-bg">
-        <div className="max-w-8xl mx-auto px-6 md:px-10 py-8">
-          <FitCheckCTA variant="banner" />
-        </div>
-      </section>
-
-      <section className="border-b-2 border-line bg-bg">
-        <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-24">
-          <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted mb-6">/ how it stacks up</div>
-          <h2 className="font-display text-4xl md:text-6xl leading-[0.95] tracking-tighter mb-10 md:mb-14">
-            signal vs. <span className="text-pink">the alternatives</span>.
-          </h2>
-
-          <div className="border-2 border-line overflow-x-auto">
-            <div className="grid grid-cols-4 border-b-2 border-line min-w-[640px]">
-              <div className="px-4 py-3 border-r-2 border-line">
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted">category</div>
-              </div>
-              <div className="px-4 py-3 border-r-2 border-line bg-pink-wash/40">
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase">signal</div>
-              </div>
-              <div className="px-4 py-3 border-r-2 border-line">
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted">typical aeo agency</div>
-              </div>
-              <div className="px-4 py-3">
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted">diy</div>
-              </div>
-            </div>
-
-            {COMPARE_ROWS.map((row) => (
-              <div key={row.label} className="grid grid-cols-4 border-b-2 border-line last:border-b-0 min-w-[640px]">
-                <div className="px-4 py-4 border-r-2 border-line">
-                  <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted">{row.label}</div>
-                </div>
-                <div className="px-4 py-4 border-r-2 border-line bg-pink-wash/40">
-                  <div className="text-sm leading-snug font-medium">{row.signal}</div>
-                </div>
-                <div className="px-4 py-4 border-r-2 border-line">
-                  <div className="text-sm leading-snug text-fg-muted">{row.agency}</div>
-                </div>
-                <div className="px-4 py-4">
-                  <div className="text-sm leading-snug text-fg-muted">{row.diy}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="border-b-2 border-line bg-fg text-bg">
         <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-24">
           <div className="grid grid-cols-12 gap-8 items-start">
@@ -233,10 +129,9 @@ export default function PricingPage() {
                   book a fit check first →
                 </Link>
               </div>
-              <div className="mt-8 flex items-center gap-3">
-                <Shield className="w-4 h-4 text-pink" strokeWidth={2} />
+              <div className="mt-8">
                 <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/60">
-                  14-day refund window · +15 guarantee · assets yours
+                  14-day pre-build refund window · assets yours after handoff
                 </span>
               </div>
             </div>
@@ -264,33 +159,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="border-b-2 border-line bg-bg">
-        <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-24">
-          <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted mb-6">/ pricing faq</div>
-          <h2 className="font-display text-4xl md:text-5xl leading-[0.95] tracking-tighter mb-10">
-            common <span className="text-pink">questions</span>.
-          </h2>
-          <div className="border-2 border-line max-w-[860px]">
-            {FAQ_ITEMS.map((item) => (
-              <FaqRow key={item.q} q={item.q} a={item.a} />
-            ))}
-          </div>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/faq"
-              className="inline-flex items-center gap-2 border-2 border-line px-5 py-3 hover:border-pink hover:text-pink transition-colors font-mono text-[11px] font-bold tracking-widest uppercase"
-            >
-              full faq →
-            </Link>
-            <Link
-              href="/fit-check"
-              className="inline-flex items-center gap-2 border-2 border-line px-5 py-3 hover:border-pink hover:text-pink transition-colors font-mono text-[11px] font-bold tracking-widest uppercase"
-            >
-              ask us directly →
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

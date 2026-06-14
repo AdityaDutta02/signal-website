@@ -36,18 +36,18 @@ const SECTIONS: { num: string; heading: string; body: string[] }[] = [
   },
   {
     num: "04",
-    heading: "the +15 ship floor",
+    heading: "the day-7 re-scan",
     body: [
-      "On day 7 we run the same 18-signal scan we ran on day 0. If the score has not moved at least +15 points, we do not call the engagement shipped. We continue building - on our dime - until the score clears +15 or until 14 additional calendar days have passed, whichever comes first.",
-      "After 14 additional days without clearing +15, we issue a 50% refund and the engagement closes. We have not had to do this on any pilot to date.",
-      "The ship floor measures the same URL, on the same rubric, with the same scanner version. We do not move the goalposts.",
+      "On day 7 we run the same 18-signal scan we ran on day 0, on the same URL, on the same rubric. You receive the before/after delta per engine and the handoff report.",
+      "The score delta is a measured outcome, not a forward guarantee. Past pilots have shown lift on at least two of three engines, but Signal makes no representation that your engagement will replicate any specific delta or pilot result.",
+      "If the day-7 numbers come in lower than expected, the engagement still ends at handoff. There is no automatic extension and no score-based refund mechanism.",
     ],
   },
   {
     num: "05",
     heading: "refunds",
     body: [
-      "14-day refund window from payment, before the first PR is shipped. After the first PR, the engagement is underway and the standard refund window closes; the ship-floor refund (50% after 14 days without +15) is the only remaining refund mechanism.",
+      "14-day refund window from payment, before the first PR is shipped. After the first PR, the engagement is underway and the refund window closes.",
       "Refunds are processed back to the original payment method within 7 business days.",
     ],
   },
@@ -64,7 +64,7 @@ const SECTIONS: { num: string; heading: string; body: string[] }[] = [
     num: "07",
     heading: "warranties and liability",
     body: [
-      "The Service is provided as-is. Signal makes no warranty that any specific score, citation rate, ranking, or revenue outcome will result from the engagement beyond the +15 ship floor stated in section 04.",
+      "The Service is provided as-is. Signal makes no warranty that any specific score, citation rate, ranking, or revenue outcome will result from the engagement. Pilot results published on /work describe past engagements only and are not a forward representation.",
       "To the maximum extent permitted by law, Signal's liability for any claim arising from the Service is capped at the fees you paid Signal in the 12 months preceding the claim.",
       "Nothing in these terms excludes liability for fraud, gross negligence, or anything else that cannot be excluded under applicable law.",
     ],

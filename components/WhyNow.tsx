@@ -23,14 +23,9 @@ export function WhyNow() {
             >
               {v51}%
             </div>
-            <a
-              href="https://www.g2.com/research/aprl-2026-b2b-buyer-behavior"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute bottom-3 left-1 md:left-2 font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted hover:text-pink transition-colors"
-            >
-              — g2, april 2026 ↗
-            </a>
+            <span className="absolute bottom-3 left-1 md:left-2 font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted italic">
+              — g2, april 2026
+            </span>
           </div>
 
           <div className="col-span-12 md:col-span-5 pb-2 md:pb-6">
