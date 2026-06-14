@@ -183,11 +183,13 @@ const defs: SignalDef[] = [
 ];
 
 // Block clusters drive the canvas layout on /methodology + /rubric.
+// Wider spread between cluster centers + more headroom in the bounding
+// box gives each block its own quadrant of breathing room.
 const clusterCenters: Record<Block, { x: number; y: number }> = {
-  A: { x: 260, y: 200 },
-  B: { x: 740, y: 200 },
-  C: { x: 260, y: 460 },
-  D: { x: 740, y: 460 },
+  A: { x: 220, y: 200 },
+  B: { x: 880, y: 200 },
+  C: { x: 220, y: 540 },
+  D: { x: 880, y: 540 },
 };
 
 // Edges encode the "this signal depends on / unlocks" relationships used in the rubric graph.
@@ -233,14 +235,14 @@ function computeLayout(
 
   const byId = new Map(nodes.map(n => [n.id, n]));
 
-  const idealEdgeLen = 90;
-  const repulse = 2400;
-  const attractK = 0.045;
-  const centerK = 0.014;
-  const minNodeDistance = 56;
+  const idealEdgeLen = 140;
+  const repulse = 4800;
+  const attractK = 0.038;
+  const centerK = 0.012;
+  const minNodeDistance = 80;
   const damping = 0.62;
   const iters = 360;
-  const minX = 110, maxX = 890, minY = 90, maxY = 580;
+  const minX = 70, maxX = 1030, minY = 70, maxY = 680;
 
   for (let it = 0; it < iters; it++) {
     const cooling = Math.max(0.18, 1 - it / iters);

@@ -13,7 +13,7 @@ export function SignalsGraph({
   onSelect?: (s: Signal) => void;
 }) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const [viewBox] = useState({ x: 140, y: 70, w: 720, h: 460 });
+  const [viewBox] = useState({ x: 50, y: 50, w: 1000, h: 660 });
   const [selected, setSelected] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
 
