@@ -46,38 +46,30 @@ export function MethodologyView() {
           </div>
 
           <h1
-            className="mt-10 md:mt-14 font-display leading-[0.86] tracking-tight anim-fade-in"
-            style={{ fontSize: "clamp(64px, 11vw, 168px)", animationDelay: "180ms" }}
+            className="mt-10 md:mt-14 font-display leading-[0.88] tracking-tight anim-fade-in"
+            style={{ fontSize: "clamp(56px, 9vw, 128px)", animationDelay: "180ms" }}
           >
-            18 signals<span className="text-pink">.</span><br />
-            3 do the lift<span className="text-pink">.</span>
+            How we score a site<span className="text-pink">.</span>
           </h1>
 
-          <h2
-            className="mt-6 md:mt-8 font-display leading-[0.92] tracking-tight anim-fade-in max-w-[920px]"
-            style={{ fontSize: "clamp(28px, 4.4vw, 60px)", animationDelay: "280ms" }}
-          >
-            The other 15 are necessary. These three decide whether an engine cites you.
-          </h2>
-
-          <div className="mt-12 grid grid-cols-12 gap-6 md:gap-10 anim-fade-in items-end" style={{ animationDelay: "380ms" }}>
+          <div className="mt-10 md:mt-12 grid grid-cols-12 gap-6 md:gap-10 anim-fade-in items-end" style={{ animationDelay: "280ms" }}>
             <div className="col-span-12 md:col-span-7">
-              <p className="text-base md:text-lg leading-snug max-w-[600px]">
-                Block A (entity, ×1.5) and Block D (off-site, ×1.4) carry the multipliers because they decide whether engines can identify you and trust you. Published rubric. Versioned. Same one we use on every engagement.
+              <p className="text-base md:text-lg leading-snug max-w-[560px] text-fg-muted">
+                Eighteen checks across four categories &mdash; schema, on-page, content, off-site. Each scored 0&ndash;5, weighted, rolled up to a number out of 100. Same rubric on every site.
               </p>
             </div>
             <div className="col-span-12 md:col-span-5 grid grid-cols-3 border-2 border-line">
               <div className="p-4 md:p-5 border-r-2 border-line">
                 <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">18</div>
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">signals</div>
+                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">checks</div>
               </div>
               <div className="p-4 md:p-5 border-r-2 border-line">
                 <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">04</div>
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">blocks</div>
+                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">categories</div>
               </div>
               <div className="p-4 md:p-5">
-                <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">115</div>
-                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">raw max</div>
+                <div className="font-display text-3xl md:text-5xl leading-none tracking-tighter">/100</div>
+                <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mt-3">scale</div>
               </div>
             </div>
           </div>
