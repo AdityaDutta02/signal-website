@@ -11,7 +11,7 @@ export function Pricing() {
     <section ref={ref} className="border-b-2 border-line bg-fg text-bg overflow-hidden">
       <div className="max-w-8xl mx-auto px-6 md:px-10 py-20 md:py-28">
         <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60 mb-8 md:mb-12">
-          / 04 · pricing · one flat fee
+          / 05 · pricing · one flat fee
         </div>
 
         <div className="grid grid-cols-12 gap-6 md:gap-10 items-end">

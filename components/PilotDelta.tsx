@@ -26,7 +26,7 @@ export function PilotDelta() {
       <div className="border-b-2 border-line bg-bg overflow-hidden">
         <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-20">
           <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted mb-6 md:mb-8">
-            / 05 · pilot delta
+            / 04 · proof
           </div>
           <div className="grid grid-cols-12 gap-6 md:gap-10 items-end">
             <div className="col-span-12 md:col-span-7 relative">

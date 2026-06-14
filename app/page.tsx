@@ -7,7 +7,6 @@ import { Pricing } from "@/components/Pricing";
 import { PilotDelta } from "@/components/PilotDelta";
 import { LeadMagnet } from "@/components/LeadMagnet";
 import { FAQ } from "@/components/FAQ";
-import { FinalCTA } from "@/components/FinalCTA";
 import { faqPageGraph, jsonLdScript } from "@/lib/jsonld";
 
 export default function HomePage() {
@@ -22,11 +21,10 @@ export default function HomePage() {
       <WhyNow />
       <Process />
       <SignalsPreview />
-      <Pricing />
       <PilotDelta />
+      <Pricing />
       <LeadMagnet />
       <FAQ />
-      <FinalCTA />
     </>
   );
 }
