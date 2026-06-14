@@ -185,18 +185,13 @@ export default function NotesDetailPage() {
                 <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted mb-3">
                   see how your site scores
                 </div>
-                <a
-                  href="#audit-input"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById("audit-input")?.focus();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
+                <Link
+                  href="/#hero-audit"
                   className="group flex items-center justify-between gap-4 bg-pink text-bg px-5 py-4 hover:bg-fg transition-colors duration-200 border-2 border-pink hover:border-fg"
                 >
                   <span className="font-display text-2xl tracking-tight">scan my site</span>
                   <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-2" strokeWidth={2.5} />
-                </a>
+                </Link>
                 <div className="mt-3 font-mono text-[10px] tracking-widest uppercase text-fg-muted">
                   free · 90 seconds · pdf emailed
                 </div>
