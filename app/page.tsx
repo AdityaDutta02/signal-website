@@ -1,6 +1,5 @@
 import { PdfMarqueeBar } from "@/components/PdfMarqueeBar";
 import { Hero } from "@/components/Hero";
-import { Marquee } from "@/components/Marquee";
 import { PilotDelta } from "@/components/PilotDelta";
 import { Pricing } from "@/components/Pricing";
 import {
@@ -28,7 +27,6 @@ export default function HomePage() {
 
       <PdfMarqueeBar />
       <Hero />
-      <Marquee />
       <PilotDelta />
       <Pricing />
     </>
