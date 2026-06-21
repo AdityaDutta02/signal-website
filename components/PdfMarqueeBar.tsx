@@ -12,6 +12,11 @@ const TOKENS = [
   "→",
 ];
 
+// One "rail" = TOKENS repeated enough times to overflow the widest viewport
+// we care about (~1920px). Two rails are rendered side-by-side so the
+// -50% translate animation produces a seamless loop.
+const RAIL_REPEAT = 6;
+
 export function PdfMarqueeBar() {
   return (
     <button
@@ -21,16 +26,18 @@ export function PdfMarqueeBar() {
       className="group relative block w-full overflow-hidden bg-pink text-bg border-b-2 border-line h-9 md:h-10 hover:bg-fg transition-colors duration-150"
     >
       <div className="anim-marquee flex items-center whitespace-nowrap h-full will-change-transform">
-        {[0, 1].map((dup) => (
-          <div key={dup} className="flex items-center gap-6 md:gap-8 pr-6 md:pr-8">
-            {TOKENS.map((t, i) => (
-              <span
-                key={`${dup}-${i}`}
-                className={`font-mono text-[10px] md:text-[11px] font-bold tracking-widest uppercase ${t === "→" ? "opacity-60" : ""}`}
-              >
-                {t}
-              </span>
-            ))}
+        {[0, 1].map((rail) => (
+          <div key={rail} className="flex items-center gap-6 md:gap-8 pr-6 md:pr-8">
+            {Array.from({ length: RAIL_REPEAT }).flatMap((_, rep) =>
+              TOKENS.map((t, i) => (
+                <span
+                  key={`${rail}-${rep}-${i}`}
+                  className={`font-mono text-[10px] md:text-[11px] font-bold tracking-widest uppercase ${t === "→" ? "opacity-60" : ""}`}
+                >
+                  {t}
+                </span>
+              )),
+            )}
           </div>
         ))}
       </div>
