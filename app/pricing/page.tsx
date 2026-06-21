@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check } from "@/components/icons";
 import { SlotBadge } from "@/components/SlotBadge";
 
 const WHAT_YOU_GET = [
   "18-signal AEO audit on your URL",
-  "per-engine scorecard (ChatGPT · Perplexity · Gemini · Claude)",
+  "per-engine scorecard (ChatGPT · Perplexity · Gemini)",
   "answer-first content rewrites on top 3 pages",
   "schema.org coverage - Article, FAQ, Org, BreadcrumbList",
   "robots.txt + llms.txt + AI sitemap shipped",
@@ -12,14 +12,6 @@ const WHAT_YOU_GET = [
   "day 7 final scan verifies +15 before handoff",
   "all assets transferred - you own the code",
   "NDA on request · standard IP clause",
-];
-
-const WHAT_YOU_DONT = [
-  "no retainer · no rolling fees",
-  "no kickoff workshop or discovery deck",
-  "no PM, AM, or agency tier",
-  "no follow-on invoice for the final scan",
-  "no lock-in after day 6",
 ];
 
 export default function PricingPage() {
@@ -69,34 +61,18 @@ export default function PricingPage() {
               </div>
             </div>
 
-            <div className="relative grid grid-cols-1 md:grid-cols-2">
-              <div className="border-b-2 md:border-b-0 md:border-r-2 border-line">
-                <div className="px-6 md:px-8 py-4 border-b-2 border-line">
-                  <div className="font-mono text-[11px] font-bold tracking-widest uppercase">+ what you get</div>
-                </div>
-                <ul className="divide-y-2 divide-line">
-                  {WHAT_YOU_GET.map((item) => (
-                    <li key={item} className="flex items-baseline gap-3 px-6 md:px-8 py-3 hover:bg-pink-wash/40 transition-colors">
-                      <Check className="w-3.5 h-3.5 text-pink flex-shrink-0 translate-y-0.5" strokeWidth={2.5} />
-                      <span className="text-sm leading-snug">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="relative">
+              <div className="px-6 md:px-8 py-4 border-b-2 border-line">
+                <div className="font-mono text-[11px] font-bold tracking-widest uppercase">+ what you get</div>
               </div>
-
-              <div>
-                <div className="px-6 md:px-8 py-4 border-b-2 border-line">
-                  <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted">× what you don&apos;t</div>
-                </div>
-                <ul className="divide-y-2 divide-line">
-                  {WHAT_YOU_DONT.map((item) => (
-                    <li key={item} className="flex items-baseline gap-3 px-6 md:px-8 py-3 hover:bg-pink-wash/40 transition-colors">
-                      <span className="text-fg-muted font-mono text-[11px] font-bold leading-none flex-shrink-0">×</span>
-                      <span className="text-sm leading-snug text-fg-muted">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="divide-y-2 divide-line">
+                {WHAT_YOU_GET.map((item) => (
+                  <li key={item} className="flex items-baseline gap-3 px-6 md:px-8 py-3 hover:bg-pink-wash/40 transition-colors">
+                    <Check className="w-3.5 h-3.5 text-pink flex-shrink-0 translate-y-0.5" strokeWidth={2.5} />
+                    <span className="text-sm leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

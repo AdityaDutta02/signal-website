@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "@/components/icons";
 
 type FooterLink = { label: string; href: string; external?: boolean };
 
@@ -40,11 +40,11 @@ export function Footer() {
   return (
     <footer className="bg-bg pb-28 md:pb-16">
       <div className="max-w-8xl mx-auto px-6 md:px-12 pt-16 md:pt-20">
-        <div className="flex items-start justify-between gap-6">
-          <div className="font-display text-[28vw] md:text-[22vw] leading-[0.78] tracking-[-0.05em] select-none">
+        <div className="flex flex-col sm:flex-row items-start justify-between gap-6">
+          <div className="font-display text-[22vw] sm:text-[22vw] md:text-[22vw] leading-[0.78] tracking-[-0.05em] select-none break-all">
             signal<span className="text-pink">*</span>
           </div>
-          <div className="text-right pt-2 md:pt-4">
+          <div className="text-left sm:text-right pt-2 md:pt-4">
             <div className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-pink inline-flex items-center gap-2">
               <span className="w-2 h-2 bg-pink" />
               taking 2 · q1 '26
@@ -70,11 +70,11 @@ export function Footer() {
 
           <FooterCol title="signals" links={[
             { label: "all 18 signals", href: "/rubric" },
-            { label: "block A · entity · 05", href: "/rubric" },
-            { label: "block B · on-page · 05", href: "/rubric" },
-            { label: "block C · content · 04", href: "/rubric" },
-            { label: "block D · off-site · 04", href: "/rubric" },
-            { label: "scoring formula", href: "/methodology" },
+            { label: "entity", href: "/rubric#entity" },
+            { label: "on-page", href: "/rubric#on-page" },
+            { label: "content", href: "/rubric#content" },
+            { label: "off-site", href: "/rubric#off-site" },
+            { label: "methodology", href: "/methodology" },
           ]} />
 
           <FooterCol title="contact" links={[
@@ -104,7 +104,7 @@ export function Footer() {
         <div className="border-t border-fg" />
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 pt-6 font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase text-fg-muted">
-          <div>© 2026 signal studio · async, async, async</div>
+          <div>© 2026 signal studio</div>
           <div className="inline-flex items-center gap-3">
             <span className="inline-flex items-center gap-2 text-pink">
               <span className="w-1.5 h-1.5 bg-pink" />

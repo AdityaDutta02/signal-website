@@ -1,16 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check } from "@/components/icons";
 
 type Variant = "nav" | "hero" | "scan";
+
+const FOCUS_EVENT = "signal:focus-nav-scan";
+
+// Programmatic focus from anywhere on the page. Other components dispatch
+// the FOCUS_EVENT; the nav variant listens and focuses its input + scrolls
+// into view. Mobile (where the nav input is hidden) falls back to opening
+// the audit modal.
+export function focusNavScan(): void {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent(FOCUS_EVENT));
+}
 
 export function AuditForm({ variant, autoFocusId }: { variant: Variant; autoFocusId?: string }) {
   const [url, setUrl] = useState("");
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (variant !== "nav") return;
+    const onFocus = () => {
+      const el = inputRef.current;
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      window.setTimeout(() => el.focus({ preventScroll: false }), 200);
+    };
+    window.addEventListener(FOCUS_EVENT, onFocus);
+    return () => window.removeEventListener(FOCUS_EVENT, onFocus);
+  }, [variant]);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,6 +68,7 @@ export function AuditForm({ variant, autoFocusId }: { variant: Variant; autoFocu
           <span className="font-mono text-[10px] font-bold tracking-widest uppercase">audit</span>
         </div>
         <input
+          ref={inputRef}
           id={autoFocusId ?? "audit-input"}
           type="text"
           value={url}

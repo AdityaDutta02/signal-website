@@ -4,7 +4,10 @@ import { createClient, type Client } from "@libsql/client";
 import type { GradedAudit } from "./grader";
 import "./env";
 
-const DATA_DIR = path.join(process.cwd(), ".data");
+// On Vercel the project root is read-only; only /tmp is writable (and ephemeral).
+// Detect via the VERCEL env var Vercel always sets.
+const FS_ROOT = process.env.VERCEL ? "/tmp/signal-data" : path.join(process.cwd(), ".data");
+const DATA_DIR = FS_ROOT;
 const AUDIT_DIR = path.join(DATA_DIR, "audits");
 const LEADS_FILE = path.join(DATA_DIR, "leads.jsonl");
 const RESERVATIONS_FILE = path.join(DATA_DIR, "reservations.jsonl");

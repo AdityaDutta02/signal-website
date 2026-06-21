@@ -379,11 +379,10 @@ const ENGINE_FOCUS: Record<AuditEngine["key"], string[]> = {
   chatgpt:    ["a1", "a2", "b6", "b9", "b10", "d15", "d16"],
   perplexity: ["a1", "a2", "b10", "b9", "c11", "c14", "d17"],
   gemini:     ["a1", "a2", "a3", "a4", "b6", "b7", "b8", "d15"],
-  claude:     ["a1", "a3", "b6", "b8", "b10", "c12", "c14"],
 };
 
 const ENGINE_TYPICAL: Record<AuditEngine["key"], number> = {
-  chatgpt: 78, perplexity: 74, gemini: 71, claude: 73,
+  chatgpt: 78, perplexity: 74, gemini: 71,
 };
 
 function engineScore(results: SignalResult[], focus: string[]): number {
@@ -624,7 +623,7 @@ export async function gradeDomain(rawDomain: string): Promise<GradedAudit> {
     return { id, score, weight: 5, passed: score >= 4, note };
   });
 
-  const engines: AuditEngine[] = (["chatgpt", "perplexity", "gemini", "claude"] as const).map(key => {
+  const engines: AuditEngine[] = (["chatgpt", "perplexity", "gemini"] as const).map(key => {
     const score = engineScore(signalResults, ENGINE_FOCUS[key]);
     return {
       key,

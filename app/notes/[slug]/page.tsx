@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "@/components/icons";
 import { notes, getNote } from "@/data/notes";
 import { signals } from "@/data/signals";
 

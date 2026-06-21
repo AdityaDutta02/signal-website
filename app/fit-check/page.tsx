@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import Link from "next/link";
-import { ArrowRight, Linkedin, Mail, Github, Check } from "lucide-react";
+import { ArrowRight, Linkedin, Mail, Github, Check } from "@/components/icons";
 
 type Slot = { day: string; time: string; available: boolean };
 

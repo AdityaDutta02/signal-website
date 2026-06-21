@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { X, ArrowRight, Check } from "lucide-react";
+import { X, ArrowRight, Check } from "@/components/icons";
 
 const OPEN_EVENT = "signal:open-audit-modal";
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Check } from "lucide-react";
+import { Check } from "@/components/icons";
 
 export function PersistentAuditStrip() {
   const [url, setUrl] = useState("");

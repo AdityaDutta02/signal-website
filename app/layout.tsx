@@ -5,26 +5,28 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { PersistentAuditStrip } from "@/components/PersistentAuditStrip";
 import { ExitIntentModal } from "@/components/ExitIntentModal";
+import { BookCallModal } from "@/components/BookCallModal";
 import { organizationGraph, jsonLdScript } from "@/lib/jsonld";
 
 const archivo = Archivo({
   variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "600", "700"],
   display: "swap",
 });
 
 const bigShoulders = Big_Shoulders({
   variable: "--font-big-shoulders",
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["900"],
   display: "swap",
+  adjustFontFallback: false,
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -68,7 +70,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${bigShoulders.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${bigShoulders.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('signal:theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"
@@ -80,6 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <PersistentAuditStrip />
           <ExitIntentModal />
+          <BookCallModal />
         </div>
       </body>
     </html>

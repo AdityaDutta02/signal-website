@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Lock } from "lucide-react";
+import { ArrowRight, Lock } from "@/components/icons";
 
 export default function UnauthorizedPage() {
   const [url, setUrl] = useState("");

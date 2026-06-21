@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CalendarClock } from "lucide-react";
+import { ArrowRight, CalendarClock } from "@/components/icons";
 
 type Variant = "card" | "banner" | "inline";
 

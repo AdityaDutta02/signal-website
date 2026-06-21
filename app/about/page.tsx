@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Linkedin, Github, Mail } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Linkedin, Github, Mail } from "@/components/icons";
 import { SlotBadge } from "@/components/SlotBadge";
 import { FitCheckCTA } from "@/components/FitCheckCTA";
 
