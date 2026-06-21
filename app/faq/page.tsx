@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@/components/icons";
 
 type FaqItem = { q: string; a: string };
 type FaqCategory = { slug: string; label: string; eyebrow: string; items: FaqItem[] };

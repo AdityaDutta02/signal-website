@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useInView } from "../hooks/useInView";
 import { useCountUp } from "../hooks/useCountUp";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@/components/icons";
 
 export function FinalCTA() {
   const [ref, inView] = useInView<HTMLDivElement>();

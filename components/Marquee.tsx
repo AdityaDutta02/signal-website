@@ -5,8 +5,6 @@ const items = [
   "chatgpt",
   "perplexity",
   "gemini",
-  "claude",
-  "copilot",
   "day-7 final scan",
   "built for b2b saas",
 ];

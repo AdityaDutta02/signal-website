@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Mail, Linkedin, Github, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Mail, Linkedin, Github, Check } from "@/components/icons";
 
 const CONTACT_CARDS = [
   { n: "01", title: "ask a question", description: "Not sure if your stack is in scope? Have a question about the rubric? Send us a note - we reply within one business day.", cta: "aditya@besignalled.com", href: "mailto:aditya@besignalled.com", external: true },

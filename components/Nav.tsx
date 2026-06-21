@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { NavLink } from "./NavLink";
-import { SlotBadge } from "./SlotBadge";
+import { NavSlotReveal } from "./NavSlotReveal";
 import { AuditForm } from "./AuditForm";
+import { ThemeToggle } from "./ThemeToggle";
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   `transition-colors duration-150 ${isActive ? "text-pink" : "hover:text-pink"}`;
@@ -23,7 +24,7 @@ export function Nav() {
             <NavLink to="/report" className={linkClass}>report</NavLink>
             <NavLink to="/notes" className={linkClass}>notes</NavLink>
           </div>
-          <SlotBadge variant="nav" />
+          <NavSlotReveal variant="nav" />
         </div>
 
         {/* Desktop - integrated audit form */}
@@ -31,10 +32,15 @@ export function Nav() {
 
         {/* Mobile nav */}
         <div className="md:hidden flex items-center gap-3 pr-6 font-mono text-[10px] font-bold tracking-widest uppercase">
-          <SlotBadge variant="nav-mobile" />
+          <NavSlotReveal variant="nav-mobile" />
           <NavLink to="/work" className={linkClass}>work</NavLink>
           <NavLink to="/methodology" className={linkClass}>method</NavLink>
-          <NavLink to="/notes" className={linkClass}>notes</NavLink>
+          <ThemeToggle />
+        </div>
+
+        {/* Desktop theme toggle */}
+        <div className="hidden md:flex items-center pr-4 border-l-2 border-line">
+          <div className="pl-4"><ThemeToggle /></div>
         </div>
       </div>
     </nav>

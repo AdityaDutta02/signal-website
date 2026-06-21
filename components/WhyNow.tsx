@@ -33,7 +33,7 @@ export function WhyNow() {
               of b2b buyers now start their software research in chatgpt<span className="text-pink">.</span>
             </h2>
             <p className="mt-6 text-base md:text-lg leading-snug max-w-[460px]">
-              Up from {v29}% twelve months earlier. They get a synthesised answer with three or four named sources and rarely click through. If your site isn't readable by ChatGPT, Perplexity, Gemini, and Claude, you're invisible at the moment buyers decide.
+              Up from {v29}% twelve months earlier. They get a synthesised answer with three or four named sources and rarely click through. If your site isn't readable by ChatGPT, Perplexity, and Gemini, you're invisible at the moment buyers decide.
             </p>
 
             <div className="mt-8 grid grid-cols-3 gap-4 border-t-2 border-line pt-6">

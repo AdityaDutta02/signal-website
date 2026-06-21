@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check } from "@/components/icons";
 
 const chapters: { num: string; title: string }[] = [
   { num: "01", title: "the answer-engine landscape" },
@@ -125,10 +124,9 @@ function PDFCover() {
       </div>
 
       <div className="absolute -top-4 -right-4 md:-top-6 md:-right-8 rotate-[12deg]">
-        <div className="bg-pink text-bg border-[3px] border-fg px-3 py-2 w-[110px] md:w-[124px] text-center">
-          <div className="font-display text-2xl md:text-3xl leading-none">FREE</div>
-          <div className="font-display text-base md:text-lg leading-tight">PDF</div>
-          <div className="font-mono text-[8px] tracking-widest mt-1 leading-tight">no drip · one email</div>
+        <div className="bg-pink text-bg border-[3px] border-fg px-4 py-3 w-[120px] md:w-[140px] text-center">
+          <div className="font-display text-3xl md:text-4xl leading-none">FREE</div>
+          <div className="font-display text-xl md:text-2xl leading-tight mt-1">PDF</div>
         </div>
       </div>
     </div>
@@ -140,7 +138,6 @@ function AuditPagePreview() {
     { l: "chatgpt", n: 31 },
     { l: "perplexity", n: 28 },
     { l: "gemini", n: 42 },
-    { l: "claude", n: 35 },
   ];
   const rows = [
     { n: "01", t: "article schema", p: false },
@@ -365,40 +362,23 @@ export default function ReportPage() {
             <span className="text-fg-muted/40">·</span>
             <span>v1.2</span>
             <span className="text-fg-muted/40">·</span>
-            <span>last updated nov &apos;25</span>
-            <span className="text-fg-muted/40">·</span>
-            <span>cc-by-nc-sa</span>
+            <span>last updated jul &apos;26</span>
           </div>
         </div>
       </section>
 
       <section className="bg-fg text-bg border-b-2 border-line">
         <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-24">
-          <div className="grid grid-cols-12 gap-6 md:gap-10 items-end">
-            <div className="col-span-12 md:col-span-6">
-              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60">/ get the report</div>
-              <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[0.95] tracking-tight">
-                mail me<br />the pdf<span className="text-pink">.</span>
-              </h2>
-              <p className="mt-6 max-w-[400px] text-bg/80 leading-snug">
-                One email. No follow-up sequence. No drip. Unsubscribe is one click.
-              </p>
-              <div className="mt-8">
-                <EmailForm label="mail me the pdf" placeholder="you@company.com" />
-              </div>
-            </div>
-            <div className="col-span-12 md:col-span-6 flex flex-col items-start md:items-end gap-4">
-              <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-bg/60">or scan your site first</div>
-              <Link
-                href="/#hero-audit"
-                className="group flex items-center justify-between gap-4 bg-pink text-bg px-6 py-6 hover:bg-bg hover:text-fg transition-colors duration-200 border-2 border-pink hover:border-bg w-full md:max-w-[380px]"
-              >
-                <span className="font-display text-3xl md:text-4xl tracking-tight">scan my site</span>
-                <ArrowRight className="w-8 h-8 transition-transform duration-200 group-hover:translate-x-2" strokeWidth={2.5} />
-              </Link>
-              <div className="font-mono text-[10px] tracking-widest uppercase text-bg/50">
-                free · 90 seconds · pdf emailed
-              </div>
+          <div className="max-w-[640px]">
+            <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60">/ get the report</div>
+            <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[0.95] tracking-tight">
+              mail me<br />the pdf<span className="text-pink">.</span>
+            </h2>
+            <p className="mt-6 max-w-[440px] text-bg/80 leading-snug">
+              Twenty-four pages. One email. Land in your inbox in under two minutes.
+            </p>
+            <div className="mt-8">
+              <EmailForm label="mail me the pdf" placeholder="you@company.com" />
             </div>
           </div>
         </div>

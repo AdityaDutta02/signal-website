@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, Download, Check, X as XIcon } from "lucide-react";
+import { ArrowRight, Download, Check, X as XIcon } from "@/components/icons";
 import { auditData, type AuditEngine, type SignalResult, type TopFix, type DayPlan } from "@/data/audit";
 import { signals } from "@/data/signals";
 import { useCountUp } from "@/hooks/useCountUp";
@@ -12,7 +12,7 @@ type AuditDataShape = typeof auditData;
 const AuditCtx = createContext<AuditDataShape>(auditData);
 const useAuditData = (): AuditDataShape => useContext(AuditCtx);
 
-const PINK_TOKENS = ["chatgpt", "perplexity", "claude", "gemini", "6 days", "day 7"];
+const PINK_TOKENS = ["chatgpt", "perplexity", "gemini", "6 days", "day 7"];
 
 function renderOneLiner(line: string): React.ReactNode {
   if (!line) return null;

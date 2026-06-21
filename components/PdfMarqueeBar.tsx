@@ -6,17 +6,9 @@ import { openExitIntentModal } from "./ExitIntentModal";
 // 24-page AEO field guide PDF. Click anywhere on the strip → opens the
 // ExitIntentModal in PDF-capture mode.
 const TOKENS = [
-  "FREE",
+  "UNDERSTAND HOW CHATGPT ACTUALLY RECOMMENDS",
   "→",
-  "24-PAGE AEO FIELD GUIDE",
-  "→",
-  "DROP YOUR EMAIL",
-  "→",
-  "PDF TO YOUR INBOX",
-  "→",
-  "NO DRIP",
-  "→",
-  "ONE-CLICK UNSUBSCRIBE",
+  "FREE IN YOUR INBOX",
   "→",
 ];
 

@@ -10,7 +10,7 @@ export type SignalResult = {
 };
 
 export type AuditEngine = {
-  key: "chatgpt" | "perplexity" | "gemini" | "claude";
+  key: "chatgpt" | "perplexity" | "gemini";
   label: string;
   score: number;
   typicalGood: number;
@@ -67,7 +67,6 @@ export const auditData = {
     { key: "chatgpt",    label: "chatgpt",    score: 31, typicalGood: 78, citedPct: 4  },
     { key: "perplexity", label: "perplexity", score: 28, typicalGood: 74, citedPct: 6  },
     { key: "gemini",     label: "gemini",     score: 42, typicalGood: 71, citedPct: 11 },
-    { key: "claude",     label: "claude",     score: 35, typicalGood: 73, citedPct: 7  },
   ] as AuditEngine[],
 
   blocks: [

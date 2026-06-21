@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { X, ArrowRight, Check } from "lucide-react";
+import { X, ArrowRight, Check } from "@/components/icons";
 
 const OPEN_EVENT = "signal:open-report-modal";
 const SESSION_FLAG = "signal:exit-intent-shown";
@@ -167,20 +167,20 @@ export function ExitIntentModal() {
         onAnimationEnd={() => setAnimClass("")}
         style={{ boxShadow: "10px 10px 0 0 #FF1F6A" }}
       >
+        <div className="absolute -top-5 -left-5 rotate-[-8deg] pointer-events-none z-0">
+          <div className="bg-pink text-bg border-[3px] border-fg px-3 py-1.5 w-[100px] text-center">
+            <div className="font-display text-xl leading-none">FREE</div>
+            <div className="font-mono text-[8px] tracking-widest mt-1">aeo guide</div>
+          </div>
+        </div>
+
         <button
           onClick={close}
-          className="absolute top-2 right-2 p-2 hover:bg-fg hover:text-bg transition-colors duration-150"
+          className="absolute top-2 right-2 z-20 p-2 bg-bg border-2 border-line hover:bg-fg hover:text-bg transition-colors duration-150"
           aria-label="close"
         >
           <X className="w-5 h-5" strokeWidth={2.5} />
         </button>
-
-        <div className="absolute -top-5 -right-5 rotate-[12deg] pointer-events-none">
-          <div className="bg-pink text-bg border-[3px] border-fg px-3 py-1.5 w-[108px] text-center">
-            <div className="font-display text-xl leading-none">FREE</div>
-            <div className="font-mono text-[8px] tracking-widest mt-1">no drip</div>
-          </div>
-        </div>
 
         {status === "sent" ? (
           <SuccessState email={email} />
@@ -237,9 +237,6 @@ export function ExitIntentModal() {
               </div>
             )}
 
-            <div className="mt-3 font-mono text-[10px] tracking-widest uppercase text-fg-muted">
-              one-click unsubscribe · we never email twice
-            </div>
           </>
         )}
       </div>
@@ -260,9 +257,6 @@ function SuccessState({ email }: { email: string }) {
       <p className="text-sm leading-snug max-w-[420px]">
         The 24-page PDF lands at <span className="font-mono font-bold">{email}</span> in
         under two minutes. If it&apos;s not there, check spam (it&apos;s plain text — no images, no tracker).
-      </p>
-      <p className="font-mono text-[10px] tracking-widest uppercase text-fg-muted">
-        one-click unsubscribe in the footer · we never email twice
       </p>
     </div>
   );
