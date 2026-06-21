@@ -53,15 +53,39 @@ export async function POST(req: Request) {
   }
 
   const leadid = makeLeadId();
-  const audit = await gradeDomain(domain);
-  await saveAudit(leadid, audit);
 
-  await appendLead({
-    source: "scan",
-    domain: audit.domain,
-    leadid,
-    email: validEmail(email) ? trimMax(email, 200) : undefined,
-  });
+  let audit;
+  try {
+    audit = await gradeDomain(domain);
+  } catch (e) {
+    console.error("[audit] gradeDomain threw", { domain, err: e instanceof Error ? e.message : String(e) });
+    return NextResponse.json(
+      { error: "audit failed to run — try again in a moment" },
+      { status: 502, headers: rateHeaders(ipCheck) },
+    );
+  }
+
+  try {
+    await saveAudit(leadid, audit);
+  } catch (e) {
+    console.error("[audit] saveAudit threw", { leadid, err: e instanceof Error ? e.message : String(e) });
+    return NextResponse.json(
+      { error: "audit storage failed — try again" },
+      { status: 503, headers: rateHeaders(ipCheck) },
+    );
+  }
+
+  try {
+    await appendLead({
+      source: "scan",
+      domain: audit.domain,
+      leadid,
+      email: validEmail(email) ? trimMax(email, 200) : undefined,
+    });
+  } catch (e) {
+    // Non-fatal: lead capture failing should not block the user seeing their report.
+    console.error("[audit] appendLead threw", { leadid, err: e instanceof Error ? e.message : String(e) });
+  }
 
   return NextResponse.json({ leadid, domain: audit.domain }, { status: 201, headers: rateHeaders(ipCheck) });
 }

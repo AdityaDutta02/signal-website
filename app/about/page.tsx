@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Linkedin, Github, Mail } from "@/components/icons";
-import { SlotBadge } from "@/components/SlotBadge";
 import { FitCheckCTA } from "@/components/FitCheckCTA";
 
 type Operator = {
@@ -96,9 +95,8 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="col-span-12 md:col-span-4 md:justify-self-end flex flex-col gap-4 items-start md:items-end">
-              <SlotBadge variant="inline" />
               <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted">
-                last updated · nov &apos;25
+                last updated · jul &apos;26
               </div>
             </div>
           </div>

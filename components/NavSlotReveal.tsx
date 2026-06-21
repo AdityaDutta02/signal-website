@@ -1,33 +1,72 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { SlotBadge } from "./SlotBadge";
 
-// Hides the nav-slot badge while the Hero "[data-hero-sentinel]" element
-// is in the viewport (so the Hero's own slot badge carries the message).
-// Slides the nav badge up into view once the user scrolls past the hero.
-// On pages without a hero sentinel (any non-home route), the nav badge
-// is visible by default.
+// Nav-slot reveal logic:
+// • On the home page the Hero owns the slot badge. Nav slot stays hidden
+//   while the hero is in the viewport, slides up into the nav once the
+//   user scrolls past it.
+// • On every other route there is no hero, so the nav slot is visible
+//   immediately.
+// • Uses [data-hero-sentinel] on the Hero element. To avoid the React
+//   mount-order race (Nav can render before Hero), we defer the
+//   IntersectionObserver setup with rAF + a small retry.
 export function NavSlotReveal({ variant = "nav" }: { variant?: "nav" | "nav-mobile" }) {
-  const [revealed, setRevealed] = useState(true);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [revealed, setRevealed] = useState(!isHome);
 
   useEffect(() => {
-    const sentinel = document.querySelector<HTMLElement>("[data-hero-sentinel]");
-    if (!sentinel) {
+    // Off-home: always visible.
+    if (!isHome) {
       setRevealed(true);
       return;
     }
-    setRevealed(false);
-    const obs = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        setRevealed(!entry.isIntersecting);
-      },
-      { rootMargin: "0px 0px -40% 0px", threshold: 0 },
-    );
-    obs.observe(sentinel);
-    return () => obs.disconnect();
-  }, []);
+
+    let obs: IntersectionObserver | null = null;
+    let raf1 = 0;
+    let raf2 = 0;
+    let attempts = 0;
+
+    const tryAttach = () => {
+      const sentinel = document.querySelector<HTMLElement>("[data-hero-sentinel]");
+      if (!sentinel) {
+        // Sentinel not in the DOM yet (Hero hasn't mounted). Retry on next
+        // frame up to ~15 frames (~250ms). If still not there, give up and
+        // reveal.
+        attempts += 1;
+        if (attempts > 15) {
+          setRevealed(true);
+          return;
+        }
+        raf2 = window.requestAnimationFrame(tryAttach);
+        return;
+      }
+
+      // Hero exists. Assume in-view at top-of-page → hide.
+      setRevealed(false);
+      obs = new IntersectionObserver(
+        (entries) => {
+          const [entry] = entries;
+          if (!entry) return;
+          setRevealed(!entry.isIntersecting);
+        },
+        { rootMargin: "0px 0px -30% 0px", threshold: 0 },
+      );
+      obs.observe(sentinel);
+    };
+
+    // Defer one frame so Hero gets to mount.
+    raf1 = window.requestAnimationFrame(tryAttach);
+
+    return () => {
+      window.cancelAnimationFrame(raf1);
+      window.cancelAnimationFrame(raf2);
+      obs?.disconnect();
+    };
+  }, [isHome, pathname]);
 
   return (
     <div

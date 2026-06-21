@@ -33,7 +33,6 @@ export default function PricingPage() {
               </p>
             </div>
             <div className="col-span-12 md:col-span-4 md:justify-self-end flex flex-col gap-4 items-start md:items-end">
-              <SlotBadge variant="inline" />
               <div className="font-mono text-[10px] font-bold tracking-widest uppercase text-fg-muted">
                 next available · q1 &apos;26
               </div>
