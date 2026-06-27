@@ -170,13 +170,15 @@ export default function FaqPage() {
                 15 minutes. Not a sales call. We&apos;ll answer your specific question and tell you whether your stack and problem are in scope.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/fit-check"
+                <a
+                  href="https://cal.com/aditya-studioionique/30min"
+                  target="_blank"
+                  rel="noopener"
                   className="group inline-flex items-center gap-3 bg-pink text-bg px-6 py-4 hover:bg-bg hover:text-fg transition-colors font-mono text-[11px] font-bold tracking-widest uppercase border-2 border-pink hover:border-bg"
                 >
-                  book a fit check
+                  book a 15-min call
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
-                </Link>
+                </a>
                 <Link
                   href="/"
                   className="inline-flex items-center gap-2 border-2 border-bg/30 px-5 py-4 hover:border-bg/80 transition-colors font-mono text-[11px] font-bold tracking-widest uppercase text-bg/70 hover:text-bg"

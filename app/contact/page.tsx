@@ -258,9 +258,9 @@ export default function ContactPage() {
             we don&apos;t have a phone number · async over email or shared doc, always
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/fit-check" className="inline-flex items-center gap-2 border-2 border-line px-4 py-2 hover:border-pink hover:text-pink transition-colors font-mono text-[10px] font-bold tracking-widest uppercase">
-              fit check · 15 min →
-            </Link>
+            <a href="https://cal.com/aditya-studioionique/30min" target="_blank" rel="noopener" className="inline-flex items-center gap-2 border-2 border-line px-4 py-2 hover:border-pink hover:text-pink transition-colors font-mono text-[10px] font-bold tracking-widest uppercase">
+              book a 15-min call →
+            </a>
             <Link href="/faq" className="inline-flex items-center gap-2 border-2 border-line px-4 py-2 hover:border-pink hover:text-pink transition-colors font-mono text-[10px] font-bold tracking-widest uppercase">
               faq →
             </Link>

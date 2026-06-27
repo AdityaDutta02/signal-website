@@ -6,33 +6,30 @@ export const revalidate = 3600;
 
 const BODY = `# Signal - signalled.studio
 
-> Signal makes B2B SaaS sites citeable by AI engines.
-> 6-day build, $2,490 flat, day-7 final scan + handoff.
-> Run by 2 operators (Aakif: SEO + content; Aditya: AI + tech).
-> Scored on Signal's 18-signal rubric (Block A entity ×1.5, B on-page, C content, D off-site ×1.4).
-> Day-7 re-scan reports before/after delta per engine. No forward guarantee on score lift.
+> Signal rebuilds B2B SaaS sites so ChatGPT, Perplexity, and Gemini cite them in answers.
+> One engagement, one invoice, $2,490. Run end-to-end by two operators (Aakif: SEO + content, 11 years; Aditya: AI + tech, 9 years).
+> Scored on Signal's published 18-signal rubric: Block A entity x1.5, B on-page x1.0, C content x1.0, D off-site x1.4.
+> Before/after scan reported on the same scorecard. No promised score lift; published rubric, public method, fixed scope.
 
 ## Pages
-- [Home](https://signalled.studio/) - what Signal does, how it works, pricing
-- [About](https://signalled.studio/about) - the bet, principles, founder
-- [Rubric](https://signalled.studio/rubric) - the published 18-signal AEO rubric (self-audit)
-- [Methodology](https://signalled.studio/methodology) - alias of /rubric, same 18-signal content
-- [Work](https://signalled.studio/work) - case studies
-- [Process](https://signalled.studio/process) - the day-by-day 6-day build
-- [Pricing](https://signalled.studio/pricing) - $2,490 flat, what is and isn't included
-- [Report](https://signalled.studio/report) - the 24-page AEO report (free PDF)
-- [Notes](https://signalled.studio/notes) - field notes and playbooks
-- [FAQ](https://signalled.studio/faq) - engagement, team, pricing, risk
-- [Fit check](https://signalled.studio/fit-check) - 15-minute scope confirmation call
-- [Contact](https://signalled.studio/contact) - reach the operator
+- [Home](https://signalled.studio/) - what Signal does, the proof, the price, the call
+- [Work](https://signalled.studio/work) - three before-and-after case studies
+- [Methodology](https://signalled.studio/methodology) - the published 18-signal rubric
+- [Notes](https://signalled.studio/notes) - field notes on getting cited by AI engines
+- [Contact](https://signalled.studio/contact) - reach the two operators by note or email
+- [FAQ](https://signalled.studio/faq) - long-form answers (SEO surface)
+- [AI Visibility Score](https://signalled.studio/ai-visibility-score) - free scanner: ChatGPT, Perplexity, Gemini score
+- [Report](https://signalled.studio/report) - free report on why most B2B sites are not cited
 - [Privacy](https://signalled.studio/privacy)
 - [Terms](https://signalled.studio/terms)
 
-## Audit
-- [Sample audit](https://signalled.studio/audit/demo) - a representative per-prospect scorecard
+## Sample
+- [Sample scorecard](https://signalled.studio/audit/demo) - a representative free AI visibility scorecard for acme.ai
 
 ## Contact
-Aditya - aditya@besignalled.com
+- Aakif - aakif@besignalled.com
+- Aditya - aditya@besignalled.com
+- Book a 15-min call - https://cal.com/aditya-studioionique/30min
 `;
 
 export function GET() {

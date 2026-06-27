@@ -34,7 +34,7 @@ export function SignalsPreview() {
           </div>
           <div className="col-span-12 md:col-span-4 flex md:items-end md:justify-end">
             <Link
-              href="/rubric"
+              href="/methodology"
               className="group inline-flex items-center gap-2 font-mono text-[11px] font-bold tracking-widest uppercase border-2 border-line px-4 py-3 hover:bg-fg hover:text-bg transition-colors duration-150"
             >
               see all 18
@@ -66,7 +66,7 @@ export function SignalsPreview() {
               <FixCard key={f.num} f={f} />
             ))}
             <Link
-              href="/rubric"
+              href="/methodology"
               className="group block p-6 md:p-7 hover:bg-fg hover:text-bg transition-colors duration-150 mt-auto"
             >
               <div className="flex items-center justify-between gap-4">

@@ -3,9 +3,7 @@ import { Archivo, Big_Shoulders, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { PersistentAuditStrip } from "@/components/PersistentAuditStrip";
 import { ExitIntentModal } from "@/components/ExitIntentModal";
-import { BookCallModal } from "@/components/BookCallModal";
 import { organizationGraph, jsonLdScript } from "@/lib/jsonld";
 
 const archivo = Archivo({
@@ -33,14 +31,14 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://signalled.studio"),
   title: {
-    default: "signal* - AEO websites for B2B SaaS, six days flat",
+    default: "Make ChatGPT Recommend You · Signal",
     template: "%s · signal*",
   },
   description:
-    "A productised AEO build for seed–series A B2B SaaS. We score 18 signals, ship the fix in six days, verify +15 before handoff. $2,490 flat.",
+    "We rebuild B2B SaaS sites so ChatGPT, Perplexity, and Gemini recommend you. $2,490, one invoice, run by the two operators on the call.",
   openGraph: {
-    title: "signal* - AEO websites for B2B SaaS",
-    description: "Six days. 18 signals. Same two operators on every build. $2,490 flat.",
+    title: "Make ChatGPT Recommend You · Signal",
+    description: "We rebuild B2B SaaS sites so ChatGPT, Perplexity, and Gemini cite you. $2,490 flat.",
     url: "https://signalled.studio",
     siteName: "signal*",
     type: "website",
@@ -48,8 +46,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "signal* - AEO websites for B2B SaaS",
-    description: "Six days. 18 signals. $2,490 flat.",
+    title: "Make ChatGPT Recommend You · Signal",
+    description: "We rebuild B2B SaaS sites so ChatGPT, Perplexity, and Gemini cite you. $2,490 flat.",
     site: "@signalled",
   },
   icons: {
@@ -70,14 +68,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${bigShoulders.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('signal:theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})();`,
-          }}
-        />
-      </head>
+    <html lang="en" className={`${archivo.variable} ${bigShoulders.variable} ${jetbrainsMono.variable}`}>
       <body>
         <script
           type="application/ld+json"
@@ -85,11 +76,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <div className="min-h-screen bg-bg text-fg flex flex-col">
           <Nav />
-          <main className="flex-1 pb-20 md:pb-0">{children}</main>
+          <main className="flex-1">{children}</main>
           <Footer />
-          <PersistentAuditStrip />
           <ExitIntentModal />
-          <BookCallModal />
         </div>
       </body>
     </html>

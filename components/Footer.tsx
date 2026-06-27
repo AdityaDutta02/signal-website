@@ -1,118 +1,71 @@
 import Link from "next/link";
-import { ArrowUpRight } from "@/components/icons";
+import { CAL_URL, BOOK_LABEL_ARROW } from "@/lib/links";
 
-type FooterLink = { label: string; href: string; external?: boolean };
-
-function FooterCol({ title, links }: { title: string; links: FooterLink[] }) {
-  return (
-    <div>
-      <div className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-fg-muted mb-7">
-        {title}
-      </div>
-      <ul className="space-y-3.5">
-        {links.map((l) => (
-          <li key={l.label}>
-            {l.external ? (
-              <a
-                href={l.href}
-                target={l.href.startsWith("mailto:") || l.href.startsWith("tel:") ? undefined : "_blank"}
-                rel={l.href.startsWith("mailto:") || l.href.startsWith("tel:") ? undefined : "noopener noreferrer"}
-                className="text-[15px] hover:text-pink transition-colors duration-150"
-              >
-                {l.label}
-              </a>
-            ) : (
-              <Link
-                href={l.href}
-                className="text-[15px] hover:text-pink transition-colors duration-150"
-              >
-                {l.label}
-              </Link>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
+/**
+ * Footer v5 — three columns, one CTA. No /about, no /pricing, no slot badge.
+ */
 export function Footer() {
   return (
-    <footer className="bg-bg pb-28 md:pb-16">
-      <div className="max-w-8xl mx-auto px-6 md:px-12 pt-16 md:pt-20">
-        <div className="flex flex-col sm:flex-row items-start justify-between gap-6">
-          <div className="font-display text-[22vw] sm:text-[22vw] md:text-[22vw] leading-[0.78] tracking-[-0.05em] select-none break-all">
-            signal<span className="text-pink">*</span>
-          </div>
-          <div className="text-left sm:text-right pt-2 md:pt-4">
-            <div className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-pink inline-flex items-center gap-2">
-              <span className="w-2 h-2 bg-pink" />
-              taking 2 · q1 '26
-            </div>
+    <footer className="bg-bg border-t-2 border-line">
+      <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mb-14">
+          {/* Wordmark + one-liner + email */}
+          <div>
+            <Link href="/" className="flex items-baseline gap-0.5" aria-label="Signal home">
+              <span className="font-display text-4xl md:text-5xl tracking-tighter leading-none">
+                signal
+              </span>
+              <span className="text-pink font-display text-4xl md:text-5xl leading-none">*</span>
+            </Link>
+            <p className="mt-5 text-[15px] leading-[1.55] max-w-[340px]">
+              We make ChatGPT, Perplexity, and Gemini cite your site. One engagement, one invoice.
+            </p>
             <a
               href="mailto:aditya@besignalled.com"
-              className="block mt-2 font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-fg-muted hover:text-fg transition-colors"
+              className="mt-4 inline-block text-[14px] underline underline-offset-4 decoration-fg/40 hover:decoration-pink hover:text-pink transition-colors"
             >
               aditya@besignalled.com
             </a>
           </div>
-        </div>
 
-        <div className="mt-8 md:mt-10 border-t border-fg" />
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 pt-12 md:pt-14 pb-16 md:pb-20">
-          <FooterCol title="the studio" links={[
-            { label: "work", href: "/work" },
-            { label: "notes", href: "/notes" },
-            { label: "methodology", href: "/methodology" },
-            { label: "the aeo report '26", href: "/report" },
-          ]} />
-
-          <FooterCol title="signals" links={[
-            { label: "all 18 signals", href: "/rubric" },
-            { label: "entity", href: "/rubric#entity" },
-            { label: "on-page", href: "/rubric#on-page" },
-            { label: "content", href: "/rubric#content" },
-            { label: "off-site", href: "/rubric#off-site" },
-            { label: "methodology", href: "/methodology" },
-          ]} />
-
-          <FooterCol title="contact" links={[
-            { label: "aditya@besignalled.com", href: "mailto:aditya@besignalled.com", external: true },
-            { label: "fit check · 15 min", href: "/fit-check" },
-            { label: "privacy policy", href: "/privacy" },
-            { label: "terms of service", href: "/terms" },
-          ]} />
-
+          {/* Site links */}
           <div>
-            <div className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-fg-muted mb-7">
-              operators
+            <div className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-fg-muted mb-6">
+              the site
             </div>
-            <p className="text-[15px] leading-[1.5] mb-5">
-              Run by Aakif and Aditya. SEO + content (11 years) and AI + tech (9 years). Same two on every audit, every fix, every handoff.
-            </p>
-            <Link
-              href="/about"
-              className="group inline-flex items-center gap-1 font-mono text-[11px] font-bold tracking-[0.22em] uppercase border-b border-fg pb-0.5 hover:text-pink hover:border-pink transition-colors"
-            >
-              read about
-              <ArrowUpRight className="w-3 h-3" strokeWidth={2.5} />
-            </Link>
+            <ul className="space-y-3 text-[14px]">
+              <li><Link href="/work" className="hover:text-pink transition-colors">work</Link></li>
+              <li><Link href="/methodology" className="hover:text-pink transition-colors">methodology</Link></li>
+              <li><Link href="/notes" className="hover:text-pink transition-colors">notes</Link></li>
+              <li>
+                <a
+                  href={CAL_URL}
+                  target="_blank"
+                  rel="noopener"
+                  className="text-pink hover:underline underline-offset-4"
+                >
+                  {BOOK_LABEL_ARROW}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal + contact */}
+          <div>
+            <div className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-fg-muted mb-6">
+              elsewhere
+            </div>
+            <ul className="space-y-3 text-[14px]">
+              <li><Link href="/contact" className="hover:text-pink transition-colors">contact</Link></li>
+              <li><Link href="/privacy" className="hover:text-pink transition-colors">privacy</Link></li>
+              <li><Link href="/terms" className="hover:text-pink transition-colors">terms</Link></li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-fg" />
-
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 pt-6 font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase text-fg-muted">
-          <div>© 2026 signal studio</div>
-          <div className="inline-flex items-center gap-3">
-            <span className="inline-flex items-center gap-2 text-pink">
-              <span className="w-1.5 h-1.5 bg-pink" />
-              site v0.3
-            </span>
-            <span>·</span>
-            <span>last self-scored 11.11.25 · 100/100</span>
-          </div>
+        <div className="border-t border-fg/30 pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 font-mono text-[10px] md:text-[11px] tracking-[0.22em] uppercase text-fg-muted">
+          <div>© 2026 signal · signalled.studio · built for ai search</div>
+          <div>aakif + aditya · two operators, every engagement</div>
         </div>
       </div>
     </footer>
