@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "What if the final scan doesn't move?",
-    a: "We show you the failing signals, the patches we shipped, and a candid read on what your stack couldn't carry. Past pilots have shown lift on at least two of three engines, but none of that's a forward guarantee — your stack, content, and competitive set drive the result.",
+    a: "We show you the failing signals, the patches we shipped, and a candid read on what your stack couldn't carry. Past pilots have shown lift on at least two of three engines, but none of that's a forward guarantee. Your stack, content, and competitive set drive the result.",
   },
   {
     q: "Is this just SEO with a new name?",

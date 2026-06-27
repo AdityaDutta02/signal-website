@@ -24,7 +24,7 @@ const STEPS: Step[] = [
   {
     num: "02",
     title: "Diagnose the entity",
-    blurb: "Engines cite things they think they understand. We audit how clearly your brand exists as a referable entity — schema, identity graph, cross-source presence. If the model isn't sure who you are, it won't name you.",
+    blurb: "Engines cite things they think they understand. We audit how clearly your brand exists as a referable entity: schema, identity graph, cross-source presence. If the model isn't sure who you are, it won't name you.",
     owner: "aditya",
     checks: "schema · identity · grounding",
   },
