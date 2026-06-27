@@ -30,7 +30,7 @@ export function PricingSection() {
               className="font-display leading-[0.92] tracking-tighter"
               style={{ fontSize: "clamp(44px, 6.6vw, 96px)" }}
             >
-              Become <mark className="signal-mark" style={{ background: "var(--pink)", color: "var(--bg)" }}>AI visible</mark> for $2,490.
+              Become <span className="text-pink">AI visible</span> for $2,490.
             </h2>
             <p className="mt-6 text-base md:text-lg leading-snug text-bg/85 max-w-[520px]">
               One engagement, one invoice. Run end-to-end by Aakif and Aditya. No retainer, no

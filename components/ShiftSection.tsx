@@ -18,8 +18,7 @@ export function ShiftSection() {
             className="font-display leading-[0.95] tracking-tighter"
             style={{ fontSize: "clamp(34px, 4.6vw, 64px)" }}
           >
-            The B2B software funnel increasingly starts with a{" "}
-            <mark className="signal-mark">chat prompt</mark>, not a Google search.
+            The B2B software funnel increasingly starts with a chat prompt, not a Google search.
           </h2>
         </div>
 

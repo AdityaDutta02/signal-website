@@ -33,7 +33,7 @@ export function ProofSection() {
           className="font-display leading-[0.96] tracking-tighter"
           style={{ fontSize: "clamp(36px, 5.4vw, 72px)" }}
         >
-          Three B2B SaaS sites got <mark className="signal-mark">cited more</mark> by ChatGPT, Perplexity, and Gemini.
+          Three B2B SaaS sites got cited more by ChatGPT, Perplexity, and Gemini.
         </h2>
         <p className="mt-6 text-base md:text-lg leading-snug max-w-[680px]">
           Three engagements, three before-and-after scans, run against the same rubric the engines
