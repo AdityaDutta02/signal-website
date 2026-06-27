@@ -9,7 +9,7 @@ import { organizationGraph, jsonLdScript } from "@/lib/jsonld";
 const archivo = Archivo({
   variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "700"],
   display: "swap",
 });
 

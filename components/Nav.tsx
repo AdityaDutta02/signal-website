@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useState } from "react";
 import Link from "next/link";
 import { NavLink } from "./NavLink";
 import { CAL_URL, BOOK_LABEL_ARROW } from "@/lib/links";
@@ -9,12 +8,12 @@ import { CAL_URL, BOOK_LABEL_ARROW } from "@/lib/links";
 /**
  * Nav v5 — single conversion CTA, no scan, no theme, no slot badge.
  *
- * Desktop: `book a 15-min call →` reveals only when neither the hero nor the
- * final CTA section is in view (those sections already host their own primary
- * CTA, so a third one in the nav would just be visual noise). Outside the
- * home page, the sticky CTA is always visible because no sentinels are mounted.
+ * Sticky `book a 15-min call →` is ALWAYS visible. An earlier version hid
+ * the CTA while the hero or final-CTA were on screen; that meant the call
+ * action disappeared exactly when a buyer was reading. The conversion path
+ * is now one click away from every scroll position.
  *
- * Mobile drawer always shows the CTA at the top.
+ * Mobile drawer puts the CTA at the top.
  */
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -30,9 +29,6 @@ const LINKS = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
-  const showCTA = useStickyCtaVisibility();
-  const pathname = usePathname();
-  const isHome = pathname === "/";
 
   return (
     <nav className="sticky top-0 z-40 bg-bg border-b-2 border-line">
@@ -55,21 +51,15 @@ export function Nav() {
           </div>
         </div>
 
-        {/* Desktop CTA — on home, reveals only when no in-page CTA is visible.
-            Off home, sentinels don't exist so the hook treats CTA as visible. */}
         <a
           href={CAL_URL}
           target="_blank"
           rel="noopener"
-          aria-hidden={isHome && !showCTA}
-          className={`hidden md:inline-flex items-center self-center bg-fg text-bg px-5 py-3 hover:bg-pink transition-all duration-300 font-mono text-[11px] font-bold tracking-[0.22em] uppercase ${
-            isHome && !showCTA ? "opacity-0 pointer-events-none -translate-y-1" : "opacity-100"
-          }`}
+          className="hidden md:inline-flex items-center self-center bg-fg text-bg px-5 py-3 hover:bg-pink transition-colors font-mono text-[11px] font-bold tracking-[0.22em] uppercase"
         >
           {BOOK_LABEL_ARROW}
         </a>
 
-        {/* Mobile hamburger */}
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -104,53 +94,4 @@ export function Nav() {
       )}
     </nav>
   );
-}
-
-/**
- * Returns `true` when the sticky nav CTA should be visible.
- *
- * Logic:
- *   - If neither sentinel exists on the page (off-home, or before mount), return true.
- *   - If at least one sentinel is intersecting the viewport, return false.
- *   - Otherwise (both off-screen) return true.
- */
-function useStickyCtaVisibility(): boolean {
-  const [visible, setVisible] = useState(true);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    // Re-check on every route change.
-    const heroEl = document.querySelector("[data-hero-sentinel]");
-    const finalEl = document.querySelector("[data-final-sentinel]");
-
-    if (!heroEl && !finalEl) {
-      setVisible(true);
-      return;
-    }
-
-    let heroIn = !!heroEl;   // assume visible until proven otherwise
-    let finalIn = !!finalEl;
-
-    const recompute = () => setVisible(!heroIn && !finalIn);
-
-    const obs = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.target === heroEl)  heroIn = e.isIntersecting;
-          if (e.target === finalEl) finalIn = e.isIntersecting;
-        }
-        recompute();
-      },
-      // small bottom margin so the CTA reveals right when the hero finishes scrolling out
-      { rootMargin: "0px 0px -10% 0px", threshold: 0 },
-    );
-
-    if (heroEl)  obs.observe(heroEl);
-    if (finalEl) obs.observe(finalEl);
-    recompute();
-
-    return () => obs.disconnect();
-  }, [pathname]);
-
-  return visible;
 }
