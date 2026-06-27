@@ -2,12 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { X, ArrowRight, Check } from "@/components/icons";
+import { CAL_URL, BOOK_LABEL_ARROW } from "@/lib/links";
 
 const OPEN_EVENT = "signal:open-report-modal";
+/** Persisted across sessions. Once an email is captured, the modal never re-opens on that browser. */
+const CAPTURED_KEY = "signal_pdf_email_captured";
+/** Per-session flag so a session that has already opened+closed without submitting waits for the next session. */
 const SESSION_FLAG = "signal:exit-intent-shown";
 
-// Programmatically open the modal from anywhere on the page.
-// Used by the Hero CTA "grab the free 24-page aeo report pdf" button.
 export function openExitIntentModal(): void {
   if (typeof window === "undefined") return;
   window.dispatchEvent(new CustomEvent(OPEN_EVENT));
@@ -15,6 +17,17 @@ export function openExitIntentModal(): void {
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+/**
+ * v5 modal — "Learn why your business is not ranking on ChatGPT."
+ *
+ * Triggers:
+ *   - Desktop: cursor leaves viewport from the top edge (exit-intent).
+ *   - Mobile (no exit-intent semantic): 30s after first paint, once per session.
+ *   - Once an email is captured on this browser, never opens again
+ *     (localStorage flag `signal_pdf_email_captured`).
+ *
+ * The PDF stub is fine — the lead is captured via /api/leads regardless.
+ */
 export function ExitIntentModal() {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -25,7 +38,6 @@ export function ExitIntentModal() {
 
   const close = useCallback(() => {
     setOpen(false);
-    // Reset after fade so re-opening starts fresh
     window.setTimeout(() => {
       if (status === "sent") {
         setEmail("");
@@ -36,91 +48,70 @@ export function ExitIntentModal() {
   }, [status]);
 
   const handleOpen = useCallback(() => {
+    // Hard gate: if an email was already captured on this browser, refuse to open.
+    try {
+      if (window.localStorage.getItem(CAPTURED_KEY) === "1") return;
+    } catch {
+      // localStorage may throw in private/embed contexts — fall through.
+    }
     setOpen(true);
     setAnimClass("anim-scale-in");
   }, []);
 
-  // Programmatic open via custom event (Hero CTA, etc.)
+  // Programmatic open
   useEffect(() => {
     const onOpen = () => handleOpen();
     window.addEventListener(OPEN_EVENT, onOpen);
     return () => window.removeEventListener(OPEN_EVENT, onOpen);
   }, [handleOpen]);
 
-  // Exit-intent trigger: only fires when the visitor has BOTH spent ≥30s on the
-  // page AND scrolled past 40% of document height. Prevents the popup hitting
-  // users who reach for the tab bar / URL audit form in the first few seconds.
-  // Suppressed permanently for the session once shown OR once any lead-capture
-  // form (Hero CTA, footer LeadMagnet) has been interacted with.
+  // Triggers (desktop exit-intent + mobile 30s timer)
   useEffect(() => {
     if (typeof window === "undefined") return;
-    let alreadyShown = false;
+
+    let captured = false;
+    let shownThisSession = false;
     try {
-      alreadyShown = window.sessionStorage.getItem(SESSION_FLAG) === "1";
-    } catch {
-      // sessionStorage can throw in some incognito/embed contexts
+      captured = window.localStorage.getItem(CAPTURED_KEY) === "1";
+      shownThisSession = window.sessionStorage.getItem(SESSION_FLAG) === "1";
+    } catch { /* ignore */ }
+    if (captured || shownThisSession) return;
+
+    const markShown = () => {
+      try { window.sessionStorage.setItem(SESSION_FLAG, "1"); } catch { /* ignore */ }
+    };
+
+    // Mobile or coarse pointer → 30s timer (no top-edge exit signal).
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+
+    if (coarse) {
+      const mobileTimer = window.setTimeout(() => {
+        markShown();
+        handleOpen();
+      }, 30_000);
+      return () => window.clearTimeout(mobileTimer);
     }
-    if (alreadyShown) return;
 
-    let timeReached = false;
-    let scrollReached = false;
-    let suppressed = false;
-
-    const armTimer = window.setTimeout(() => {
-      timeReached = true;
-    }, 30_000);
-
-    const onScroll = () => {
-      const doc = document.documentElement;
-      const max = doc.scrollHeight - window.innerHeight;
-      if (max <= 0) return;
-      const pct = window.scrollY / max;
-      if (pct >= 0.4) {
-        scrollReached = true;
-        window.removeEventListener("scroll", onScroll);
-      }
-    };
-
-    // Any interaction with an email/url input means the user is already engaged —
-    // a popup at that point would be pure interruption.
-    const onFormFocus = (e: FocusEvent) => {
-      const t = e.target as HTMLElement | null;
-      if (!t) return;
-      if (t.tagName === "INPUT" || t.tagName === "TEXTAREA") {
-        suppressed = true;
-      }
-    };
-
+    // Desktop exit-intent: cursor leaves through the top edge.
+    // Allow firing more eagerly than v4 — every fresh session per the v5 rule.
     const onLeave = (e: MouseEvent) => {
-      if (suppressed) return;
-      if (!(timeReached && scrollReached)) return;
       if (e.clientY > 8) return;
       if (e.relatedTarget !== null) return;
-      try {
-        window.sessionStorage.setItem(SESSION_FLAG, "1");
-      } catch { /* ignore */ }
+      markShown();
       handleOpen();
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    document.addEventListener("focusin", onFormFocus);
-    document.addEventListener("mouseout", onLeave);
-    return () => {
-      window.clearTimeout(armTimer);
-      window.removeEventListener("scroll", onScroll);
-      document.removeEventListener("focusin", onFormFocus);
       document.removeEventListener("mouseout", onLeave);
     };
+    document.addEventListener("mouseout", onLeave);
+    return () => document.removeEventListener("mouseout", onLeave);
   }, [handleOpen]);
 
-  // Escape to close + focus trap on the dialog
+  // ESC + focus
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
     };
     window.addEventListener("keydown", onKey);
-    // Auto-focus the email field
     window.setTimeout(() => {
       dialogRef.current?.querySelector<HTMLInputElement>("input[type=email]")?.focus();
     }, 50);
@@ -136,13 +127,14 @@ export function ExitIntentModal() {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ source: "report", email: email.trim(), notes: "exit-intent modal" }),
+        body: JSON.stringify({ source: "report", email: email.trim(), notes: "exit-intent modal v5" }),
       });
       if (!res.ok) {
         const j = await res.json().catch(() => ({ error: "send failed" }));
         throw new Error(j.error ?? "send failed");
       }
       setStatus("sent");
+      try { window.localStorage.setItem(CAPTURED_KEY, "1"); } catch { /* ignore */ }
     } catch (err) {
       setStatus("error");
       setErrMsg(err instanceof Error ? err.message : "send failed");
@@ -154,7 +146,7 @@ export function ExitIntentModal() {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 anim-fade-in"
-      style={{ background: "rgba(10,10,10,0.45)" }}
+      style={{ background: "rgba(10,10,10,0.55)" }}
       onClick={close}
       role="dialog"
       aria-modal="true"
@@ -162,18 +154,11 @@ export function ExitIntentModal() {
     >
       <div
         ref={dialogRef}
-        className={`relative bg-bg border-[3px] border-line max-w-[520px] w-full p-7 md:p-9 ${animClass}`}
+        className={`relative bg-bg border-[3px] border-line max-w-[560px] w-full p-7 md:p-10 ${animClass}`}
         onClick={(e) => e.stopPropagation()}
         onAnimationEnd={() => setAnimClass("")}
-        style={{ boxShadow: "10px 10px 0 0 #FF1F6A" }}
+        style={{ boxShadow: "12px 12px 0 0 #FF1F6A" }}
       >
-        <div className="absolute -top-5 -left-5 rotate-[-8deg] pointer-events-none z-0">
-          <div className="bg-pink text-bg border-[3px] border-fg px-3 py-1.5 w-[100px] text-center">
-            <div className="font-display text-xl leading-none">FREE</div>
-            <div className="font-mono text-[8px] tracking-widest mt-1">aeo guide</div>
-          </div>
-        </div>
-
         <button
           onClick={close}
           className="absolute top-2 right-2 z-20 p-2 bg-bg border-2 border-line hover:bg-fg hover:text-bg transition-colors duration-150"
@@ -186,19 +171,18 @@ export function ExitIntentModal() {
           <SuccessState email={email} />
         ) : (
           <>
-            <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted">
-              {status === "idle" ? "the aeo report" : "almost there"}
+            <div className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-fg-muted">
+              / before you go
             </div>
             <h3
               id="exit-intent-heading"
-              className="mt-3 font-display text-4xl md:text-5xl leading-[0.92] tracking-tight"
+              className="mt-3 font-display text-3xl md:text-5xl leading-[0.92] tracking-tighter"
             >
-              take the<br />
-              24-page report<span className="text-pink">.</span>
+              Learn why your business is not ranking on ChatGPT.
             </h3>
-            <p className="mt-4 text-sm leading-snug max-w-[420px]">
-              The 18 signals we test, the engines we test them on, and the fix patterns
-              we shipped on the first three pilots. One email. One PDF. Nothing else.
+            <p className="mt-4 text-sm md:text-[15px] leading-snug max-w-[460px]">
+              A short read on how the engines decide who to recommend, and what most B2B sites are
+              missing. Free, by email.
             </p>
 
             <form
@@ -218,12 +202,10 @@ export function ExitIntentModal() {
               <button
                 type="submit"
                 disabled={status === "sending" || !email}
-                className="group flex items-center gap-2 px-5 py-3 bg-fg text-bg hover:bg-pink transition-colors duration-200 font-mono text-[11px] font-bold tracking-widest uppercase disabled:opacity-60 disabled:cursor-not-allowed"
+                className="group flex items-center gap-2 px-5 py-3 bg-fg text-bg hover:bg-pink transition-colors duration-200 font-mono text-[11px] font-bold tracking-[0.22em] uppercase disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {status === "sending" ? (
-                  <>sending…</>
-                ) : (
-                  <>send it <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2.5} /></>
+                {status === "sending" ? <>sending…</> : (
+                  <>send me the read <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" strokeWidth={2.5} /></>
                 )}
               </button>
             </form>
@@ -231,12 +213,11 @@ export function ExitIntentModal() {
             {status === "error" && errMsg && (
               <div
                 role="alert"
-                className="mt-3 border-2 border-pink bg-pink-wash/40 px-3 py-2 font-mono text-[10px] font-bold tracking-widest uppercase text-pink"
+                className="mt-3 border-2 border-pink bg-pink-wash/40 px-3 py-2 font-mono text-[10px] font-bold tracking-[0.22em] uppercase text-pink"
               >
-                {errMsg} — try again or email aditya@besignalled.com
+                {errMsg}. try again or email aditya@besignalled.com
               </div>
             )}
-
           </>
         )}
       </div>
@@ -245,19 +226,27 @@ export function ExitIntentModal() {
 }
 
 function SuccessState({ email }: { email: string }) {
+  const local = email.split("@")[0] || "you";
   return (
     <div className="flex flex-col items-start gap-4">
-      <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-pink flex items-center gap-2">
-        <Check className="w-4 h-4" strokeWidth={2.5} /> on its way
+      <div className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-pink flex items-center gap-2">
+        <Check className="w-4 h-4" strokeWidth={2.5} /> sent
       </div>
-      <h3 className="font-display text-4xl md:text-5xl leading-[0.92] tracking-tight">
-        check<br />
-        <span className="text-pink">{email.split("@")[0]}</span>’s inbox<span className="text-pink">.</span>
+      <h3 className="font-display text-3xl md:text-5xl leading-[0.92] tracking-tighter">
+        Check <span className="text-pink">{local}</span>&rsquo;s inbox.
       </h3>
-      <p className="text-sm leading-snug max-w-[420px]">
-        The 24-page PDF lands at <span className="font-mono font-bold">{email}</span> in
-        under two minutes. If it&apos;s not there, check spam (it&apos;s plain text — no images, no tracker).
+      <p className="text-sm md:text-[15px] leading-snug max-w-[440px]">
+        The read lands at <span className="font-mono font-bold">{email}</span> shortly. If
+        it&apos;s not there in a few minutes, check spam.
       </p>
+      <a
+        href={CAL_URL}
+        target="_blank"
+        rel="noopener"
+        className="mt-2 inline-flex items-center gap-2 border-b-2 border-fg pb-0.5 font-mono text-[11px] font-bold tracking-[0.22em] uppercase hover:text-pink hover:border-pink transition-colors"
+      >
+        {BOOK_LABEL_ARROW}
+      </a>
     </div>
   );
 }
