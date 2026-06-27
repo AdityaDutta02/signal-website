@@ -211,9 +211,8 @@ export default function WorkDetailPage() {
       <section className="border-b-2 border-line bg-pink-wash">
         <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-24">
           <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-fg-muted mb-6">/ what we shipped</div>
-          <h2 className="font-display text-4xl md:text-5xl leading-[0.92] tracking-tight mb-10 md:mb-14">
-            three signals<span className="text-pink">.</span><br />
-            six days<span className="text-pink">.</span>
+          <h2 className="font-display text-4xl md:text-5xl leading-[0.92] tracking-tighter mb-10 md:mb-14">
+            What We Shipped<span className="text-pink">.</span>
           </h2>
 
           <div className="border-2 border-line bg-bg">
@@ -330,13 +329,15 @@ export default function WorkDetailPage() {
               </Link>
             </div>
             <div className="col-span-12 md:col-span-6 flex md:justify-end">
-              <Link
-                href="/#hero-audit"
+              <a
+                href="https://cal.com/aditya-studioionique/30min"
+                target="_blank"
+                rel="noopener"
                 className="group flex items-center justify-between gap-4 bg-pink text-bg px-6 py-5 hover:bg-fg transition-colors duration-200 border-2 border-pink hover:border-fg"
               >
-                <span className="font-display text-2xl md:text-3xl tracking-tight">scan my site</span>
+                <span className="font-display text-2xl md:text-3xl tracking-tighter">book a 15-min call</span>
                 <ArrowRight className="w-6 h-6 transition-transform duration-200 group-hover:translate-x-2" strokeWidth={2.5} />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

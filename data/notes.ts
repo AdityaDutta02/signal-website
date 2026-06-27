@@ -205,6 +205,62 @@ export const notes: Note[] = [
     ],
     related: ["09", "13", "01"],
   },
+
+  // ─── Placeholder notes (v5). Real bodies land before public launch. ───
+  {
+    slug: "how-chatgpt-picks-sources",
+    title: "How ChatGPT, Perplexity, and Gemini decide who to recommend.",
+    num: "07",
+    date: "draft",
+    readTime: "draft",
+    tag: "essay",
+    excerpt:
+      "Three checks every engine runs before naming a vendor: entity grounding, parse-clean HTML, and off-site confirmation. Real post lands before public launch.",
+    body: [
+      {
+        paragraphs: [
+          "Placeholder body. Replace before public launch with the long-form post on how each engine decides who to cite.",
+        ],
+      },
+    ],
+    related: ["06"],
+  },
+  {
+    slug: "seo-vs-aeo",
+    title: "The difference between SEO and AEO, in plain language.",
+    num: "08",
+    date: "draft",
+    readTime: "draft",
+    tag: "essay",
+    excerpt:
+      "Same web, different funnel. Link graph vs citation graph. Where the work overlaps and where it does not. Real post lands before public launch.",
+    body: [
+      {
+        paragraphs: [
+          "Placeholder body. Replace before public launch with the long-form post on the SEO/AEO split.",
+        ],
+      },
+    ],
+    related: ["07"],
+  },
+  {
+    slug: "one-engagement-not-retainer",
+    title: "The case for one AI search engagement, not a quarterly retainer.",
+    num: "09",
+    date: "draft",
+    readTime: "draft",
+    tag: "essay",
+    excerpt:
+      "The 18 signals do not take a quarter to fix. Why we ship one fixed-scope engagement instead of a retainer. Real post lands before public launch.",
+    body: [
+      {
+        paragraphs: [
+          "Placeholder body. Replace before public launch with the long-form post on the engagement model.",
+        ],
+      },
+    ],
+    related: ["08"],
+  },
 ];
 
 export function getNote(slug: string): Note | undefined {

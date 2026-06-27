@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight } from "@/components/icons";
 import { cases, avgDelta, type CaseStudy } from "@/data/cases";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
+import { CAL_URL, BOOK_LABEL } from "@/lib/links";
 
 function HeroStats() {
   const [ref, inView] = useInView<HTMLDivElement>();
@@ -128,17 +129,16 @@ export default function WorkPage() {
           </div>
 
           <h1
-            className="mt-10 md:mt-14 font-display leading-[0.86] tracking-tight anim-fade-in"
-            style={{ fontSize: "clamp(64px, 11vw, 168px)", animationDelay: "180ms" }}
+            className="mt-10 md:mt-14 font-display leading-[0.92] tracking-tighter anim-fade-in"
+            style={{ fontSize: "clamp(56px, 9vw, 132px)", animationDelay: "180ms" }}
           >
-            three pilots<span className="text-pink">.</span><br />
-            measured lift<span className="text-pink">.</span>
+            Case Studies: Three B2B SaaS<br />Sites Cited More By ChatGPT,<br />Perplexity, And Gemini.
           </h1>
 
           <div className="mt-12 grid grid-cols-12 gap-6 md:gap-10 anim-fade-in items-end" style={{ animationDelay: "340ms" }}>
             <div className="col-span-12 md:col-span-7">
-              <p className="text-lg md:text-xl leading-snug max-w-[560px]">
-                Day 0 vs day 7. Same prompts. Same engines. No re-prompting. The proof is in the delta.
+              <p className="text-lg md:text-xl leading-snug max-w-[600px]">
+                Same rubric, three different stacks. Numbers below are before and after, scored on the published 18-signal rubric.
               </p>
             </div>
             <HeroStats />
@@ -156,24 +156,26 @@ export default function WorkPage() {
         <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-24">
           <div className="grid grid-cols-12 gap-6 md:gap-10 items-end">
             <div className="col-span-12 md:col-span-7">
-              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60">/ ready to be next?</div>
-              <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[0.95] tracking-tight">
-                your site<span className="text-pink">.</span><br />
-                your delta<span className="text-pink">.</span><br />
-                six days<span className="text-pink">.</span>
+              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60">/ bring your url</div>
+              <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[0.95] tracking-tighter">
+                Bring Your URL.<br />
+                We Will Tell You<br />
+                The <span className="text-pink">Move</span>.
               </h2>
-              <p className="mt-6 max-w-[440px] text-bg/80 leading-snug">
-                Free scan to start. No call, no account, PDF in 90 seconds.
+              <p className="mt-6 max-w-[460px] text-bg/80 leading-snug">
+                Fifteen minutes, your site live, the scan run on the call.
               </p>
             </div>
             <div className="col-span-12 md:col-span-5">
-              <Link
-                href="/#hero-audit"
+              <a
+                href={CAL_URL}
+                target="_blank"
+                rel="noopener"
                 className="group flex items-center justify-between gap-4 bg-pink text-bg px-6 py-6 hover:bg-bg hover:text-fg transition-colors duration-200 border-2 border-pink hover:border-bg"
               >
-                <span className="font-display text-3xl md:text-4xl tracking-tight">scan my site</span>
+                <span className="font-display text-3xl md:text-4xl tracking-tighter">{BOOK_LABEL}</span>
                 <ArrowRight className="w-8 h-8 transition-transform duration-200 group-hover:translate-x-2" strokeWidth={2.5} />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

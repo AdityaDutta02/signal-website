@@ -229,22 +229,24 @@ export default function NotesPage() {
         <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-24">
           <div className="grid grid-cols-12 gap-6 md:gap-10 items-end">
             <div className="col-span-12 md:col-span-7">
-              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60">/ see your score</div>
-              <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[0.95] tracking-tight">
-                run the 18-signal scan on your site<span className="text-pink">.</span>
+              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60">/ want this run on your site</div>
+              <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[0.95] tracking-tighter">
+                Fifteen Minutes. Every Engine Scanned.
               </h2>
-              <p className="mt-6 max-w-[440px] text-bg/80 leading-snug">
-                Free, 90 seconds, PDF emailed. No call, no account. Same rubric we run on every paid engagement.
+              <p className="mt-6 max-w-[460px] text-bg/80 leading-snug">
+                Bring your URL. We pull your site live on the call and tell you the move.
               </p>
             </div>
             <div className="col-span-12 md:col-span-5">
-              <Link
-                href="/#hero-audit"
+              <a
+                href="https://cal.com/aditya-studioionique/30min"
+                target="_blank"
+                rel="noopener"
                 className="group flex items-center justify-between gap-4 bg-pink text-bg px-6 py-6 hover:bg-bg hover:text-fg transition-colors duration-200 border-2 border-pink hover:border-bg"
               >
-                <span className="font-display text-3xl md:text-4xl tracking-tight">scan my site</span>
+                <span className="font-display text-3xl md:text-4xl tracking-tighter">book a 15-min call</span>
                 <ArrowRight className="w-8 h-8 transition-transform duration-200 group-hover:translate-x-2" strokeWidth={2.5} />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

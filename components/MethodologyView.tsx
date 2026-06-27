@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { signals, type Signal } from "@/data/signals";
 import { SignalsGraph } from "@/components/SignalsGraph";
-import { focusNavScan } from "@/components/AuditForm";
 import { ArrowRight } from "@/components/icons";
 
 type Step = {
@@ -161,28 +160,29 @@ export function MethodologyView() {
         </div>
       </section>
 
-      {/* ─────────── SCAN CTA ─────────── */}
+      {/* ─────────── BOOK CTA ─────────── */}
       <section className="bg-fg text-bg border-b-2 border-line">
         <div className="max-w-8xl mx-auto px-6 md:px-10 py-14 md:py-20">
           <div className="grid grid-cols-12 gap-6 md:gap-10 items-end">
             <div className="col-span-12 md:col-span-7">
-              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60">/ see your score</div>
-              <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[0.95] tracking-tight">
-                Run the scan on<br />your site<span className="text-pink">.</span>
+              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-bg/60">/ score your site, live on the call</div>
+              <h2 className="mt-4 font-display text-4xl md:text-6xl leading-[0.95] tracking-tighter">
+                Score Your Site Against<br />The <span className="text-pink">Rubric</span>.
               </h2>
-              <p className="mt-6 max-w-[440px] text-bg/80 leading-snug">
-                Drop your URL in the nav. Report appears on screen and arrives by email. No call, no account.
+              <p className="mt-6 max-w-[460px] text-bg/80 leading-snug">
+                Fifteen minutes, your URL, the same scan a paying client gets.
               </p>
             </div>
             <div className="col-span-12 md:col-span-5">
-              <button
-                type="button"
-                onClick={focusNavScan}
+              <a
+                href="https://cal.com/aditya-studioionique/30min"
+                target="_blank"
+                rel="noopener"
                 className="group w-full flex items-center justify-between gap-4 bg-pink text-bg px-6 py-6 hover:bg-bg hover:text-fg transition-colors duration-200 border-2 border-pink hover:border-bg"
               >
-                <span className="font-display text-3xl md:text-4xl tracking-tight">scan my site</span>
+                <span className="font-display text-3xl md:text-4xl tracking-tighter">book a 15-min call</span>
                 <ArrowRight className="w-8 h-8 transition-transform duration-200 group-hover:translate-x-2" strokeWidth={2.5} />
-              </button>
+              </a>
             </div>
           </div>
         </div>
