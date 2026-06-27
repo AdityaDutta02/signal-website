@@ -103,10 +103,10 @@ function PDFCover() {
             <span>the aeo report</span>
             <span>&apos;25 / nov</span>
           </div>
-          <div className="mt-1 font-mono text-[10px] tracking-widest uppercase text-bg/40">24 pages · free pdf</div>
+          <div className="mt-1 font-mono text-[10px] tracking-widest uppercase text-bg/40">free read · by email</div>
 
           <div className="mt-6 md:mt-8 font-display text-[44px] md:text-[60px] leading-[0.82] tracking-tighter text-bg">
-            the<br />aeo<br />report<span className="text-pink">.</span>
+            why<br />chatgpt<br />ignores<br />you<span className="text-pink">.</span>
           </div>
 
           <div className="mt-auto pt-6 border-t-2 border-bg/20">
@@ -264,23 +264,22 @@ export default function ReportPage() {
         <div className="relative max-w-8xl mx-auto px-6 md:px-10 pt-10 md:pt-14 pb-12 md:pb-16">
           <div className="flex flex-wrap items-center gap-2 md:gap-3 font-mono text-[11px] font-bold tracking-widest uppercase anim-fade-in">
             <span className="w-2 h-2 bg-pink" />
-            <span>report</span>
+            <span>free read</span>
             <span className="text-fg-muted">/</span>
-            <span>24 pages</span>
-            <span className="text-fg-muted">/</span>
-            <span>free pdf</span>
+            <span>by email</span>
           </div>
 
           <h1
-            className="mt-10 md:mt-14 font-display leading-[0.88] tracking-tight anim-fade-in"
-            style={{ fontSize: "clamp(56px, 10vw, 144px)", animationDelay: "180ms" }}
+            className="mt-10 md:mt-14 font-display leading-[0.92] tracking-tighter anim-fade-in"
+            style={{ fontSize: "clamp(48px, 8vw, 128px)", animationDelay: "180ms" }}
           >
-            the aeo report<span className="text-pink">.</span>
+            Why Your Business Is<br />Not Ranking On <span className="text-pink">ChatGPT</span>.
           </h1>
 
           <div className="mt-8 anim-fade-in" style={{ animationDelay: "280ms" }}>
-            <p className="text-base md:text-xl leading-snug max-w-[640px]">
-              Twenty-four pages of audit data, scoring rubrics, fix patterns, and the decision tree we use on every engagement.
+            <p className="text-base md:text-xl leading-snug max-w-[680px]">
+              A free report on how ChatGPT, Perplexity, and Gemini decide who to recommend, the
+              signals they score, and what most B2B SaaS sites are missing.
             </p>
           </div>
 
