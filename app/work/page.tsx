@@ -6,6 +6,7 @@ import { cases, avgDelta, type CaseStudy } from "@/data/cases";
 import { useInView } from "@/hooks/useInView";
 import { useCountUp } from "@/hooks/useCountUp";
 import { CAL_URL, BOOK_LABEL } from "@/lib/links";
+import { HeroSticker } from "@/components/HeroSticker";
 
 function HeroStats() {
   const [ref, inView] = useInView<HTMLDivElement>();
@@ -113,12 +114,13 @@ function CaseCard({ c, index }: { c: CaseStudy; index: number }) {
 export default function WorkPage() {
   return (
     <>
-      <section className="relative border-b-2 border-line overflow-hidden">
+      <section className="relative border-b-2 border-line overflow-hidden bg-bg">
         <div className="absolute inset-0 bg-grid opacity-50 pointer-events-none" />
         <div className="absolute top-0 left-0 w-3 h-3 bg-pink" />
         <div className="absolute top-0 right-0 w-3 h-3 bg-pink" />
+        <HeroSticker mark="w" tilt={5} />
 
-        <div className="relative max-w-8xl mx-auto px-6 md:px-10 pt-10 md:pt-14 pb-12 md:pb-16">
+        <div className="relative z-[3] max-w-8xl mx-auto px-6 md:px-10 pt-16 md:pt-20 pb-20 md:pb-24">
           <div className="flex flex-wrap items-center gap-2 md:gap-3 font-mono text-[11px] font-bold tracking-widest uppercase anim-fade-in">
             <span className="w-2 h-2 bg-pink" />
             <span>work</span>

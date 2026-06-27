@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "@/components/icons";
 import { CAL_URL, BOOK_LABEL } from "@/lib/links";
+import { HeroSticker } from "@/components/HeroSticker";
 import { ScoreForm } from "./ScoreForm";
 
 export const metadata: Metadata = {
@@ -66,8 +67,9 @@ export default function AiVisibilityScorePage() {
       />
 
       {/* Hero + scan form */}
-      <section className="bg-bg border-b-2 border-line">
-        <div className="max-w-8xl mx-auto px-6 md:px-10 pt-20 pb-16 md:pt-28 md:pb-24">
+      <section className="relative bg-bg border-b-2 border-line overflow-hidden">
+        <HeroSticker mark="?" tilt={-4} />
+        <div className="relative z-[3] max-w-8xl mx-auto px-6 md:px-10 pt-20 pb-16 md:pt-28 md:pb-24">
           <div className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-fg-muted mb-6">
             / free ai visibility score
           </div>
