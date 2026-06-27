@@ -1,0 +1,62 @@
+import { ArrowRight, Check } from "@/components/icons";
+import { CAL_URL, BOOK_LABEL } from "@/lib/links";
+
+const BULLETS = [
+  "Per-engine scorecard before and after, so you can see the move",
+  "Answer-first rewrites on the three pages costing you the most citations",
+  "Schema coverage on every key route, validated against Schema.org",
+  "robots.txt, llms.txt, and an AI sitemap shipped to your repo",
+  "SSR or hydration fixes when your stack is in the way",
+  "All assets transferred. Your code, your repo, your control.",
+];
+
+/**
+ * S3b · Pricing — its own full section, dark.
+ *
+ * Standalone so it reads as a price card, not the bottom of the proof block.
+ * Dark background (bg-fg) makes the visual break from the proof section
+ * unambiguous.
+ */
+export function PricingSection() {
+  return (
+    <section className="bg-fg text-bg border-b-2 border-line">
+      <div className="max-w-8xl mx-auto px-6 md:px-10 py-16 md:py-24">
+        <div className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-bg/60 mb-6">
+          / pricing
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
+          <div>
+            <h2
+              className="font-display leading-[0.92] tracking-tighter"
+              style={{ fontSize: "clamp(44px, 6.6vw, 96px)" }}
+            >
+              Become <mark className="signal-mark" style={{ background: "var(--pink)", color: "var(--bg)" }}>AI visible</mark> for $2,490.
+            </h2>
+            <p className="mt-6 text-base md:text-lg leading-snug text-bg/85 max-w-[520px]">
+              One engagement, one invoice. Run end-to-end by Aakif and Aditya. No retainer, no
+              follow-on, no PMs.
+            </p>
+            <a
+              href={CAL_URL}
+              target="_blank"
+              rel="noopener"
+              className="group mt-8 inline-flex items-center gap-3 bg-pink text-bg px-7 py-4 hover:bg-bg hover:text-fg transition-colors font-mono text-[11px] font-bold tracking-[0.22em] uppercase border-2 border-pink hover:border-bg"
+            >
+              {BOOK_LABEL}
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" strokeWidth={2.5} />
+            </a>
+          </div>
+
+          <ul className="space-y-3 md:pl-8 md:border-l-2 md:border-bg/30">
+            {BULLETS.map((b) => (
+              <li key={b} className="flex items-baseline gap-2.5 text-sm md:text-[15px] leading-snug">
+                <Check className="w-3.5 h-3.5 text-pink flex-shrink-0 translate-y-0.5" strokeWidth={2.5} />
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}

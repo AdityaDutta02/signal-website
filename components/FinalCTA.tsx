@@ -18,7 +18,7 @@ export function FinalCTA() {
           className="font-display leading-[0.92] tracking-tighter"
           style={{ fontSize: "clamp(56px, 8.5vw, 128px)" }}
         >
-          See Where Your Site Lands<br />On Every AI Engine.
+          See where your site lands on <mark className="signal-mark" style={{ background: "var(--pink)", color: "var(--bg)" }}>every AI engine</mark>.
         </h2>
 
         <p className="mt-8 text-base md:text-xl leading-snug max-w-[760px] text-bg/85">

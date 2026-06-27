@@ -1,30 +1,37 @@
-import Image from "next/image";
-
 /**
- * S2 · The shift — tight half-section.
+ * S2 · The shift — half-section, no image.
  *
- * Compact layout: text + chart side by side, capped height so the section
- * never grows past one screen. Chart capped to ~280-300px so the section
- * stays short.
+ * Stat-led layout: large display headline with a black highlight pull on the
+ * phrase that names the new buyer behavior ("chat prompt"), then a large
+ * percentage number with one supporting line and a citation. No chart asset
+ * (the G2 SVG was 84 KB of bundle weight that the section did not need).
  */
 export function ShiftSection() {
   return (
-    <section className="relative bg-pink-wash border-b-2 border-line overflow-hidden">
-      <div className="max-w-8xl mx-auto px-6 md:px-10 py-10 md:py-14 grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-8 md:gap-14 items-center">
+    <section className="bg-pink-wash border-b-2 border-line">
+      <div className="max-w-8xl mx-auto px-6 md:px-10 py-12 md:py-16 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-10 md:gap-16 items-center">
         <div>
           <div className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-fg-muted mb-4">
             / the shift
           </div>
           <h2
-            className="font-display leading-[0.92] tracking-tighter"
-            style={{ fontSize: "clamp(30px, 4.4vw, 60px)" }}
+            className="font-display leading-[0.95] tracking-tighter"
+            style={{ fontSize: "clamp(34px, 4.6vw, 64px)" }}
           >
-            51% Of B2B Buyers Now Start<br />Research In ChatGPT.
+            The B2B software funnel increasingly starts with a{" "}
+            <mark className="signal-mark">chat prompt</mark>, not a Google search.
           </h2>
-          <p className="mt-4 text-sm md:text-base leading-snug max-w-[560px]">
-            Eleven months ago it was 29%. The funnel has moved, and most sites have not. If
-            ChatGPT can&apos;t read your page, parse your schema, or trust your sources, you don&apos;t
-            make the shortlist. Your competitors do.
+        </div>
+
+        <div className="border-l-2 border-fg pl-6 md:pl-8">
+          <div
+            className="font-display leading-none tracking-tighter text-fg"
+            style={{ fontSize: "clamp(80px, 11vw, 152px)" }}
+          >
+            71%
+          </div>
+          <p className="mt-4 text-sm md:text-base leading-snug max-w-[440px]">
+            rely on AI chatbots for software research (up from ~60% seven months ago).
           </p>
           <p className="mt-4 font-mono text-[11px] text-fg-muted">
             Source:{" "}
@@ -38,20 +45,6 @@ export function ShiftSection() {
             </a>
           </p>
         </div>
-
-        <figure className="relative">
-          <Image
-            src="/proof/g2-heatmap.svg"
-            alt="G2 heatmap: AI search adoption by company size, showing 51% of buyers start research with AI chatbots"
-            width={420}
-            height={290}
-            className="w-full h-auto max-h-[260px] md:max-h-[300px] object-contain border-2 border-fg bg-bg"
-            unoptimized
-          />
-          <figcaption className="mt-2 font-mono text-[10px] text-fg-muted tracking-[0.04em]">
-            Heatmap: AI search adoption across SMB, Mid Market, Enterprise. Source: G2 Insight Report, Q1 FY27.
-          </figcaption>
-        </figure>
       </div>
     </section>
   );

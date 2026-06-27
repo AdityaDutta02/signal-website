@@ -49,7 +49,7 @@ export function HowFAQ() {
           className="font-display leading-[0.96] tracking-tighter"
           style={{ fontSize: "clamp(36px, 5.4vw, 72px)" }}
         >
-          Five Moves. Your Site Cited More<br />By ChatGPT, Perplexity, And Gemini.
+          <mark className="signal-mark">Five moves.</mark> Your site cited more by ChatGPT, Perplexity, and Gemini.
         </h2>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-5 border-2 border-line">

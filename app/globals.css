@@ -114,6 +114,18 @@ body {
 .anim-pulse-soft { animation: pulse-soft 3s ease-in-out infinite; }
 .anim-scale-in { animation: scale-in 280ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 
+/* Signal text highlight — black box around white text. Used for attention
+   pulls on key conversion phrases. box-decoration-break makes multi-line
+   marks split cleanly per line instead of one long stretched rectangle. */
+mark.signal-mark {
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.05em 0.22em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  border-radius: 0;
+}
+
 /* WordRotator — fixed-height slot, words stacked absolutely, only the active
    one is opacity 1. All words are in the DOM so SEO + LLM citation bots see
    every brand name even when only one is visible. */
