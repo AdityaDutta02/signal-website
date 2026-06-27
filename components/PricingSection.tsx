@@ -48,10 +48,15 @@ export function PricingSection() {
             </a>
           </div>
 
-          <ul className="space-y-3 md:pl-8 md:border-l-2 md:border-fg/40">
+          <ul className="md:pl-10 md:border-l-2 md:border-fg/40 divide-y divide-fg/20">
             {BULLETS.map((b) => (
-              <li key={b} className="flex items-baseline gap-2.5 text-sm md:text-[15px] leading-snug">
-                <Check className="w-3.5 h-3.5 text-pink flex-shrink-0 translate-y-0.5" strokeWidth={2.5} />
+              <li
+                key={b}
+                className="flex items-start gap-4 md:gap-5 py-4 md:py-5 first:pt-0 last:pb-0 text-base md:text-lg leading-snug"
+              >
+                <span className="flex-shrink-0 w-7 h-7 md:w-8 md:h-8 border-2 border-fg bg-bg flex items-center justify-center">
+                  <Check className="w-4 h-4 md:w-[18px] md:h-[18px] text-pink" strokeWidth={3} />
+                </span>
                 <span>{b}</span>
               </li>
             ))}
